@@ -27,9 +27,10 @@ This project utilizes Jupyter Notebook to integrate PFSD data. The primary goal 
   - **Data Preprocessing**: Manually classify related topics across years.
   - **Categorize with GPT-3.5 Turbo** *(Not Required)*: A trial step using OpenAI to do clustering.
   - **Survey Questions Clustering**: Use GPT-4o-mini for classification. Output file: `type_x.csv`
+  - **Using Statistical Learning to do Clustering** *(Not Required)*
   - **Answer Organizing**: Organize answers using union. Output file: `variable_map_type_x.csv`
   - **Output Survey Outcome**: Output each person's answer in each cluster.
-  - **Using Statistical Learning to do Clustering** *(Not Required)*
+  
 
 ## Vision
 - **Python 3.9**
