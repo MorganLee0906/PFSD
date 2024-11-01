@@ -2,6 +2,7 @@
 
 ## Project Overview
 This project utilizes Jupyter Notebook to integrate PFSD data. The primary goal is to use the GPT-4o-mini model to cluster questionnaire items and compile the questions, answers, and individual responses into a comprehensive comparison table.
+You can also check `PFSD_presentation_1030.pdf` to see the project detail. 
 
 ## Technologies Used
 - **Python**: The main programming language.
