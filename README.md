@@ -34,4 +34,4 @@ You can also check `PFSD_presentation_1030.pdf` to see the project detail.
   
 
 ## Vision
-- **Python 3.9**
+- **Python 3.12**
