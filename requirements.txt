@@ -1,0 +1,7 @@
+pandas
+openai
+numpy
+wordcloud
+matplotlib
+setuptools
+tensorflow
