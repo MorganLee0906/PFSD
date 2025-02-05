@@ -33,10 +33,8 @@ You can also check `PFSD_presentation_1030.pdf` to see the project detail.
   - **Output Survey Outcome**: Output each person's answer in each cluster.
   
 
-## Vision
-<<<<<<< HEAD
+## Version
 - **Python 3.12**
-=======
 
 ---
 
@@ -55,4 +53,3 @@ You can also check `PFSD_presentation_1030.pdf` to see the project detail.
 ---
 ## 使用說明
 (待補)
->>>>>>> 7f7deb8 (Modify clustering procedure and add some tool (merge.py))
