@@ -13,10 +13,10 @@ import sys
 
 sys.stdout.flush()
 
-# f = open("api_key.txt", "r")
-# api_key = f.read()
-# openai.api_key = api_key
-# f.close()
+f = open("api_key.txt", "r")
+api_key = f.read()
+openai.api_key = api_key
+f.close()
 
 print("Modules are already loaded.")
 
@@ -81,37 +81,62 @@ def extract_year(year_string):
 
 
 def clustering_question(input_pkl_path, output_folder_path):
+    w = open(f"record_{input_pkl_path.split('/')
+             [-1].replace('.pkl', '.txt')}", 'w')
+    w.write(f'Now reading {input_pkl_path}')
     print(f'Now reading {input_pkl_path}')
     with open(input_pkl_path, 'rb') as f:
         data = pickle.load(f)
 
-    # -----------------------------------------------------------
-    # 第一次分類：利用CV2008年的資料進行分類
-    # 提取年份
     refer_indices = data[data['YEAR'] == 'CV2008'].index
     data.loc[refer_indices, 'cluster'] = range(1, len(refer_indices)+1)
+    data["matched"] = None
     refer_data = data.loc[refer_indices][['QUESTION', 'cluster']]
+    max_cluster = len(refer_indices)
 
     print("1st clustering reference:")
+    w.write("1st clustering reference:")
     reference_text = "\n".join([f"Question: {row['QUESTION']}, Cluster: {
                                 row['cluster']}" for _, row in refer_data.iterrows()])
     print(reference_text)
+    w.write(reference_text)
+    print("-----------------------------------")
+    w.write("-----------------------------------\n")
 
     none_indices = data[data['cluster'].isna()].index
 
     # 使用 GPT-4o-mini 進行分類
     for index in none_indices:
-        print(f"Question data: {data.iloc[index]['QUESTION']}")
+        if data.iloc[index]['YEAR'] == 'CV2008':
+            continue
+        print("Processing index: ", index, "Year:", data.iloc[index]['YEAR'])
+        w.write(f"Processing index: {index} Year: {
+                data.iloc[index]['YEAR']}\n")
         prompt = f"""
-        Based on the previous clustering data, here is the reference:
+        Below is the reference clustering data that details the existing clusters and examples:
         {reference_text}
-        Now, based on the following data, please:
-        1. Assign a cluster number.
-        2. Provide the similarity between 0 and 1.
-        Format the response as: Cluster: X, Similarity: Y
-        Data: {data.iloc[index]['QUESTION']}
 
-        If the data does not fit into any existing clusters then format the response as: Cluster: 0, Similarity: 0
+        Now, for the given input data, please do the following:
+
+        1. Analyze the Input Question
+            Consider the semantic context, intent, and the subject of the question. For example, pay special attention to whether the subject is the same (e.g., father, mother, etc.) when comparing with the reference clusters.            Identify its key features compared to the reference clusters.
+            Identify its key features compared to the reference clusters.
+        2. Determine the Appropriate Primary Cluster
+            If the question is highly similar (e.g., similarity score ≥ 0.8) to an existing cluster, assign that cluster number as the primary cluster.
+            If the question does not sufficiently match any existing clusters, assign it a new cluster number (unique relative to the reference clusters) and set the primary similarity score to 0.
+        3. Identify Other Similar Clusters
+            Identify any additional clusters from the reference that have moderate to high similarity with the input question (for example, similarity score ≥ 0.5).
+            List these clusters by their numbers only in the "Similar with" section.
+        4. Format Your Response
+            Your final output must be in the following format:
+            Cluster: X, Similarity: Y, Similar with: [Z0, Z1, ...]
+            where:
+            X is the primary cluster number (or the new cluster number if no match).
+            Y is the similarity score between 0 and 1 for the primary classification.
+            Z0, Z1, ... are the cluster numbers of other similar clusters from the reference data.
+            If there are no similar clusters, leave the "Similar with" section empty.
+
+        Input Data: {data.iloc[index]['QUESTION']}
         """
 
         try:
@@ -119,164 +144,67 @@ def clustering_question(input_pkl_path, output_folder_path):
                 model="gpt-4o-mini",
                 messages=[
                     {"role": "system",
-                        "content": "You are an expert in clustering survey data."},
+                        "content": '''You are a highly skilled data clustering expert specializing in analyzing and categorizing survey questions based on nuanced semantic differences. Your responsibilities include:
+                                    1. Accurately matching survey questions to existing clusters based on context and intent.
+                                    2. Differentiating between questions with similar wording but distinct meanings (e.g., "planned/intended" vs. "confirmed") and ensuring that differences in the subject (e.g., father vs. mother) are properly taken into account.
+                                    3. Handling cases where similar questions appear in multiple clusters by selecting the most appropriate cluster with clear reasoning.
+                                    4. If a question does not sufficiently match any existing clusters, assign it a new cluster number that is unique relative to the reference clusters.
+                                    5. Providing a similarity score between 0 and 1 for the primary classification, where 1 indicates a perfect match.
+                                    6. Additionally, list other clusters from the reference that have moderate to high similarity with the input question. Only provide their cluster numbers (do not include their similarity scores).
+                                    7. Please STRICTLY follow the format provided in the prompt for your response.'''},
                     {"role": "user", "content": prompt}
                 ],
-                max_tokens=20,  # 限制回應的長度以只包含 cluster 編號
+                max_tokens=40,  # 限制回應的長度以只包含 cluster 編號
                 temperature=0.1  # 設定較低的隨機性以提高準確性
             )
 
             # 從 GPT 的回應中獲取預測的 Cluster 值
             generated_text = response.choices[0].message.content.strip()
-            print(f"Generated cluster for index {index}: {generated_text}")
 
             # 使用正則表達式從生成的文本中提取 Cluster 和 Similarity 值
             cluster_match = re.search(r'Cluster:\s*(\d+)', generated_text)
             similarity_match = re.search(
                 r'Similarity:\s*([0-9]*\.?[0-9]+)', generated_text)
-            predicted_cluster = cluster_match.group(
-                1) if cluster_match else 0
+            match = re.search(r'Similar with: \[(.*?)\]', generated_text)
+            predicted_matched = match.group(1).split(', ') if match else []
+            predicted_cluster = cluster_match.group(1) if cluster_match else 0
             predicted_similarity = similarity_match.group(
                 1) if similarity_match else 0
 
+            print(f"Reply for question {
+                  data.iloc[index]['QUESTION']}:\n", generated_text)
+            w.write(f"Reply for index {
+                    data.iloc[index]['QUESTION']}\n: {generated_text}\n")
+            print("Predicted Cluster:", predicted_cluster,
+                  "Predicted Similarity:", predicted_similarity)
+            w.write(f"Predicted Cluster: {predicted_cluster}, Predicted Similarity: {
+                    predicted_similarity}\n")
+            if predicted_matched:
+                print("Predicted Matched:", predicted_matched)
+                w.write(f"Predicted Matched: {predicted_matched}\n")
             # 更新數據
             data.at[index, 'cluster'] = predicted_cluster
             data.at[index, 'similarity'] = predicted_similarity
-            print(index, f"cluster:{predicted_cluster}", f"similarity:{
-                predicted_similarity}", sep='\t')
+            data.at[index, 'matched'] = predicted_matched
+            if int(predicted_cluster) > max_cluster:
+                max_cluster = int(predicted_cluster)
+                reference_text += f"\nQuestion: {
+                    data.iloc[index]['QUESTION']}, Cluster: {predicted_cluster}"
+                print("Updated reference clustering data:", f"Question: {
+                      data.iloc[index]['QUESTION']}, Cluster: {predicted_cluster}")
+                w.write("Updated reference clustering data:", f"Question: {
+                        data.iloc[index]['QUESTION']}, Cluster: {predicted_cluster}\n")
         except Exception as e:
             print(f"Error while processing index {index}: {str(e)}")
+            w.write(f"Error while processing index {index}: {str(e)}")
 
-    # -----------------------------------------------------------
-    # 第二次分類：對於難以分類的資料，再進行一次分類
-    # 將 cluster 和 similarity 轉換為數值
-    data['cluster'] = pd.to_numeric(data['cluster'], errors='coerce')
-    data['similarity'] = pd.to_numeric(data['similarity'], errors='coerce')
-
-    for year in data['YEAR'].unique():
-        year_data = data[data['YEAR'] == year]
-        # 獲取所有 cluster 的唯一值 (除了 cluster 0)
-        clusters = year_data['cluster'].dropna().unique()
-        clusters = clusters[clusters != 0]
-        for cluster in clusters:
-            cluster_data = year_data[year_data['cluster'] == cluster]
-            if len(cluster_data) > 1:
-                # 獲取具有最高相似度的記錄
-                max_similarity = cluster_data['similarity'].max()
-                # 獲取具有最高相似度的記錄的索引
-                max_similarity_indices = cluster_data[cluster_data['similarity']
-                                                      == max_similarity].index
-                # 獲取其他記錄的索引
-                other_indices = cluster_data[~cluster_data.index.isin(
-                    max_similarity_indices)].index
-                # 將相似度較低的記錄設置為 cluster 0
-                data.loc[other_indices, 'cluster'] = 0
-                data.loc[other_indices, 'similarity'] = 0
-
-    data['YEAR_EXTRACTED'] = data['YEAR'].apply(extract_year)
-    # 處理 cluster = 0 的資料
-    cluster_0_data = data[data['cluster'] == 0]
-    median_year = cluster_0_data['YEAR_EXTRACTED'].median()
-    min_year = cluster_0_data.loc[cluster_0_data['YEAR_EXTRACTED']
-                                  < median_year, 'YEAR_EXTRACTED'].max()
-    selected_data = cluster_0_data[cluster_0_data['YEAR_EXTRACTED'] == min_year]
-
-    if selected_data.empty:
-        print("沒有符合條件年份的資料")
-    original_max_cluster = data['cluster'].max()
-
-    # 將選定的資料分配到新的 cluster
-    for index in enumerate(selected_data.index):
-        data.at[index, 'cluster'] = data['cluster'].max() + 1
-
-    print('第二次分類總共有', max(data['cluster']), '個cluster')
-    print("2nd clustering reference:")
-    refer_data = data[data['cluster'] >
-                      original_max_cluster][['QUESTION', 'cluster']]
-    reference_text_2 = "\n".join([f"Question: {row['QUESTION']}, Cluster: {
-        row['cluster']}" for _, row in refer_data.iterrows()])
-    print(reference_text_2)
-    # 使用 GPT-4o-mini 進行第二次分類
-    none_indices = data[data['cluster'] == 0].index
-    for index in none_indices:
-        print(f"Question data: {data.iloc[index]['QUESTION']}")
-        prompt = f"""
-        Based on the previous clustering data, here is the reference:
-        {reference_text_2}
-        Now, based on the following data, please:
-        1. Assign a cluster number.
-        2. Provide the similarity between 0 and 1.
-        Format the response as: Cluster: X, Similarity: Y
-        Data: {data.iloc[index]['QUESTION']}
-
-        If the data does not fit into any existing clusters then format the response as: Cluster: 0, Similarity: 0
-        """
-        try:
-            response = openai.chat.completions.create(
-                model="gpt-4o-mini",
-                messages=[
-                    {"role": "system",
-                        "content": "You are an expert in clustering survey data."},
-                    {"role": "user", "content": prompt}
-                ],
-                max_tokens=20,
-                temperature=0.1
-            )
-
-            generated_text = response.choices[0].message.content.strip()
-            cluster_match = re.search(r'Cluster:\s*(\d+)', generated_text)
-            similarity_match = re.search(
-                r'Similarity:\s*([0-9]*\.?[0-9]+)', generated_text)
-            predicted_cluster = int(
-                cluster_match.group(1)) if cluster_match else 0
-            predicted_similarity = float(
-                similarity_match.group(1)) if similarity_match else 0
-
-            # 更新數據
-            data.at[index, 'cluster'] = predicted_cluster
-            data.at[index, 'similarity'] = predicted_similarity
-            print(index, "  ;cluster:", predicted_cluster,
-                  "  ;similarity:", predicted_similarity)
-        except Exception as e:
-            print(f"Error processing index {index}: {e}")
-
-    # Step 3: 对相同年份但相似度较低的 cluster 进行处理
-    for year in data['YEAR_EXTRACTED'].unique():
-        year_data = data[data['YEAR_EXTRACTED'] == year]
-        clusters = year_data['cluster'].unique()
-        clusters = clusters[clusters != 0]
-
-        for cluster in clusters:
-            cluster_data = year_data[year_data['cluster'] == cluster]
-            if len(cluster_data) > 1:
-                max_similarity = cluster_data['similarity'].max()
-                max_similarity_indices = cluster_data[cluster_data['similarity']
-                                                      == max_similarity].index
-                other_indices = cluster_data[~cluster_data.index.isin(
-                    max_similarity_indices)].index
-
-                # 将相似度较低的设置为 cluster 0
-                data.loc[other_indices, 'cluster'] = 0
-                data.loc[other_indices, 'similarity'] = 0
-
-    # 保存更新後的.pkl文件
-    updated_pkl_path = os.path.join(
-        output_folder_path, input_pkl_path.split('/')[-1])
-    with open(updated_pkl_path, 'wb') as f:
-        pickle.dump(data, f)
-
-    # 輸出csv文件路徑
-    csv_file_name = input_pkl_path.split('/')[-1].replace('.pkl', '.csv')
-    csv_path = os.path.join(output_folder_path, csv_file_name)
-
-    output_data = data[['ANSWER', 'NUMBER',
-                        'QUESTION', 'YEAR', 'cluster', 'similarity']]
-
-    output_data.to_csv(csv_path, index=False)
-
-    print(f"分類結果已保存至 {csv_path} 和 {updated_pkl_path}")
-
-# -----------------------------------------------------------
+    fcsv_file_name = input_pkl_path.split(
+        '/')[-1].replace('.pkl', '.csv')
+    fcsv_path = os.path.join(output_folder_path, fcsv_file_name)
+    foutput_data = data[['ANSWER', 'NUMBER',
+                        'QUESTION', 'YEAR', 'cluster', 'similarity', 'matched']]
+    foutput_data.to_csv(fcsv_path, index=False)
+    print(f"Saved: {fcsv_path}")
 
 
 def keep_chinese(input_string):
@@ -288,7 +216,7 @@ def keep_chinese(input_string):
 
 def preprocess_answer(folder_path, answer_folder_path):
     for f_type in os.listdir(folder_path):
-        if f_type.endswith(".csv") and not f_type.startswith("var_map"):  # Read typeX.csv
+        if f_type.endswith("3.csv") and not f_type.startswith("var_map"):  # Read typeX.csv
             print(f"Processing: {f_type}")
             f_type_path = os.path.join(folder_path, f_type)
             df = pd.read_csv(f_type_path)
@@ -353,7 +281,7 @@ def preprocess_answer(folder_path, answer_folder_path):
 
 def merge_surveydata(question_path, output_path):
     for question_type in os.listdir(question_path):
-        if question_type.endswith('.csv') and question_type.startswith(f'type_'):
+        if question_type.endswith('.csv') and question_type.startswith(f'type_3'):
             question_file = os.path.join(question_path, question_type)
             data = pd.read_csv(question_file)
             data = data.dropna()
@@ -415,10 +343,20 @@ def merge_surveydata(question_path, output_path):
             print(f'Saved: {result_path}')
 
 
+def convert_option(survey_path, var_map_path, type):
+    survey_file_path = os.path.join(
+        survey_path, f'{type}_survey_data_processed.csv')
+    survey_data = pd.read_csv(survey_file_path)
+    var_map_file_path = os.path.join(var_map_path, f'var_map_type_{type}.csv')
+    var_map_data = pd.read_csv(var_map_file_path)
+    survey_data = sorted(survey_data, key=lambda x: x['ID'])
+
+
 # preprocess_data('data/five_years/', 'data/five_years/five_years_by_type')
 # for i in range(1, 10):
 #     clustering_question(f'data/five_years/five_years_by_type/type_{i}.pkl',
 #                         'data/five_years/five_years_by_type')
-# preprocess_answer('data/five_years/five_years_by_type', 'data/five_years')
+preprocess_answer('data/five_years/five_years_by_type', 'data/five_years')
 merge_surveydata('data/five_years/five_years_by_type',
                  'data/five_years/five_years_survey_data')
+# clustering_question('data/five_years/five_years_by_type/type_4.pkl', 'data/five_years/five_years_by_type')

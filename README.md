@@ -34,4 +34,25 @@ You can also check `PFSD_presentation_1030.pdf` to see the project detail.
   
 
 ## Vision
+<<<<<<< HEAD
 - **Python 3.12**
+=======
+
+---
+
+## 檔案說明
+---
+### main.py
+將原先的ipynb code 整併到同一檔案
+### add_to_csv.py
+將文字輸出檔更新至csv（開發時的測試code，可忽略）
+### check.py
+檢查cluster是否正確用，未來可開發成網頁版方便操作
+### merge.py
+將分類好的題目與問卷整併
+（原先於notebook的整併功能僅顯示問卷選項變數，此版本自動轉換為選項文字方便檢查）
+
+---
+## 使用說明
+(待補)
+>>>>>>> 7f7deb8 (Modify clustering procedure and add some tool (merge.py))
