@@ -4,3 +4,6 @@ Test code/
 api_key.txt
 api_test.txt
 .DS_Store
+.DS_Store
+CV2008_label.numbers
+.gitignore

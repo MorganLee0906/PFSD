@@ -13,7 +13,7 @@ import sys
 
 sys.stdout.flush()
 
-f = open("api_key.txt", "r")
+f = open("api_test.txt", "r")
 api_key = f.read()
 openai.api_key = api_key
 f.close()
@@ -113,28 +113,15 @@ def clustering_question(input_pkl_path, output_folder_path):
         w.write(f"Processing index: {index} Year: {
                 data.iloc[index]['YEAR']}\n")
         prompt = f"""
-        Below is the reference clustering data that details the existing clusters and examples:
+        Using the reference clustering data below:
         {reference_text}
 
-        Now, for the given input data, please do the following:
-
-        1. Analyze the Input Question
-            Consider the semantic context, intent, and the subject of the question. For example, pay special attention to whether the subject is the same (e.g., father, mother, etc.) when comparing with the reference clusters.            Identify its key features compared to the reference clusters.
-            Identify its key features compared to the reference clusters.
-        2. Determine the Appropriate Primary Cluster
-            If the question is highly similar (e.g., similarity score ≥ 0.8) to an existing cluster, assign that cluster number as the primary cluster.
-            If the question does not sufficiently match any existing clusters, assign it a new cluster number (unique relative to the reference clusters) and set the primary similarity score to 0.
-        3. Identify Other Similar Clusters
-            Identify any additional clusters from the reference that have moderate to high similarity with the input question (for example, similarity score ≥ 0.5).
-            List these clusters by their numbers only in the "Similar with" section.
-        4. Format Your Response
-            Your final output must be in the following format:
-            Cluster: X, Similarity: Y, Similar with: [Z0, Z1, ...]
-            where:
-            X is the primary cluster number (or the new cluster number if no match).
-            Y is the similarity score between 0 and 1 for the primary classification.
-            Z0, Z1, ... are the cluster numbers of other similar clusters from the reference data.
-            If there are no similar clusters, leave the "Similar with" section empty.
+        For the given input question, follow these steps:
+            1.	Analyze the question – Identify its key features and compare them to the reference clusters.
+            2.	Determine the primary cluster – Assign the closest matching cluster (if similarity ≥ 0.8). If no match, create a new cluster with similarity 0.
+            3.	Find similar clusters – List other clusters with moderate to high similarity (≥ 0.5).
+            4.	Format the output as:
+        Cluster: X, Similarity: Y, Similar with: [Z0, Z1, …]
 
         Input Data: {data.iloc[index]['QUESTION']}
         """
@@ -144,14 +131,14 @@ def clustering_question(input_pkl_path, output_folder_path):
                 model="gpt-4o-mini",
                 messages=[
                     {"role": "system",
-                        "content": '''You are a highly skilled data clustering expert specializing in analyzing and categorizing survey questions based on nuanced semantic differences. Your responsibilities include:
-                                    1. Accurately matching survey questions to existing clusters based on context and intent.
-                                    2. Differentiating between questions with similar wording but distinct meanings (e.g., "planned/intended" vs. "confirmed") and ensuring that differences in the subject (e.g., father vs. mother) are properly taken into account.
-                                    3. Handling cases where similar questions appear in multiple clusters by selecting the most appropriate cluster with clear reasoning.
-                                    4. If a question does not sufficiently match any existing clusters, assign it a new cluster number that is unique relative to the reference clusters.
-                                    5. Providing a similarity score between 0 and 1 for the primary classification, where 1 indicates a perfect match.
-                                    6. Additionally, list other clusters from the reference that have moderate to high similarity with the input question. Only provide their cluster numbers (do not include their similarity scores).
-                                    7. Please STRICTLY follow the format provided in the prompt for your response.'''},
+                        "content": '''You are an expert in data clustering, specializing in categorizing survey questions based on nuanced semantic differences. Your tasks:
+                                        1.	Match questions to existing clusters based on context and intent.
+                                        2.	Differentiate similar wording with distinct meanings (e.g., 'planned' vs. 'confirmed') and account for subject differences (e.g., 'father' vs. 'mother').
+                                        3.	If a question fits multiple clusters, select the most appropriate one with clear reasoning.
+                                        4.	If no sufficient match exists, assign a new unique cluster number.
+                                        5.	Provide a similarity score (0-1) for the primary classification (1 = perfect match).
+                                        6.	List other similar clusters (only their numbers, no similarity scores).
+                                        7.	STRICTLY follow the required output format.'''},
                     {"role": "user", "content": prompt}
                 ],
                 max_tokens=40,  # 限制回應的長度以只包含 cluster 編號
@@ -205,6 +192,131 @@ def clustering_question(input_pkl_path, output_folder_path):
                         'QUESTION', 'YEAR', 'cluster', 'similarity', 'matched']]
     foutput_data.to_csv(fcsv_path, index=False)
     print(f"Saved: {fcsv_path}")
+
+
+def clustering_method2(input_csv_path, output_folder_path):
+    w = open(f"record_{input_csv_path.split('/')
+             [-1].replace('.csv', '.txt')}", 'w')
+    w.write(f'Now reading {input_csv_path}')
+    print(f'Now reading {input_csv_path}')
+    data = pd.read_csv(input_csv_path)
+    cnt = 1
+    for c in data['category'].unique():
+        base = 'CV2008'
+        if base not in data[data['category'] == c]['YEAR'].values:
+            print(f"Category {c} not found in CV2008")
+            base = str(
+                min(map(extract_year, data[data['category'] == c]['YEAR'])))
+            base = data[data['YEAR'].str.contains(base)]['YEAR'].values[0]
+            print("New base year:", base)
+        else:
+            print("Found CV2008")
+        print(f"Now processing category: {c}")
+        refer_indices = data[(data['YEAR'] == base) &
+                             (data['category'] == c)].index
+        for idx in refer_indices:
+            if data.loc[idx]['cluster'] == 0:
+                data.loc[idx, 'cluster'] = data['cluster'].max() + 1
+            data.loc[idx, 'similarity'] = 1
+        refer_data = data.loc[refer_indices][['QUESTION', 'cluster']]
+
+        print("1st clustering reference:")
+        w.write("1st clustering reference:\n")
+        reference_text = "\n".join([f"Question: {row['QUESTION']}, Cluster: {
+                                    row['cluster']}" for _, row in refer_data.iterrows()])
+        print(reference_text)
+        w.write(reference_text+'\n')
+        print("-----------------------------------")
+        w.write("-----------------------------------\n")
+
+        none_indices = data[(data['YEAR'] != base) & (
+            data['category'] == c) & (data['similarity'] != 1)].index
+        print(data.loc[none_indices]['QUESTION'].to_list())
+        # wait = input('Press Enter to continue...')
+        # 使用 GPT-4o-mini 進行分類
+        for index in none_indices:
+            data.loc[index, 'cluster'] = 0
+            data.loc[index, 'similarity'] = 0
+            if data.iloc[index]['YEAR'] == base:
+                continue
+            print("Processing index: ", index,
+                  "Year:", data.iloc[index]['YEAR'])
+            w.write(f"Processing index: {index} Year: {
+                    data.iloc[index]['YEAR']}\n")
+            prompt = f"""
+            Using the reference clustering data below:
+            {reference_text}
+            For the given input question, follow these steps:
+                1.	Analyze the question – Identify its key features and compare them to the reference clusters.
+                2.	Determine the primary cluster – Assign the closest matching cluster (if similarity ≥ 0.8). If no match, create a new cluster with similarity 0.
+            Input Data: {data.iloc[index]['QUESTION']}
+            """
+
+            try:
+                response = openai.chat.completions.create(
+                    model="gpt-4o-mini",
+                    messages=[
+                        {"role": "system",
+                            "content": '''你是一個專門合併不同年度之問卷題目的專家，你的任務是相同的問題分類在一起。你需要：
+                                        1. 分析問題 - 若兩個不同的題目在問同一件事，則分類到相同的群組中。
+                                        2. 確定主要群組 - 將最接近的匹配群組分配給問題（如果相似度≥ 0.8）。如果沒有匹配，則創建一個新的群組，相似度為0。
+                                        3. 格式化輸出如下，不准輸出與格式無關的文字：Cluster: X, Similarity: Y
+                                        4. 如果問題與多個群組匹配，請選擇最合適的群組。
+                                        5. 若題目敘述不完整，請依照題目內的主詞進行分類。
+                                '''},
+                        {"role": "user", "content": prompt}
+                    ],
+                    max_tokens=20,  # 限制回應的長度以只包含 cluster 編號
+                    temperature=0.1  # 設定較低的隨機性以提高準確性
+                )
+
+                # 從 GPT 的回應中獲取預測的 Cluster 值
+                generated_text = response.choices[0].message.content.strip()
+
+                # 使用正則表達式從生成的文本中提取 Cluster 和 Similarity 值
+                cluster_match = re.search(r'Cluster:\s*(\d+)', generated_text)
+                similarity_match = re.search(
+                    r'Similarity:\s*([0-9]*\.?[0-9]+)', generated_text)
+                predicted_cluster = cluster_match.group(
+                    1) if cluster_match else 0
+                predicted_similarity = similarity_match.group(
+                    1) if similarity_match else 0
+                predicted_similarity = float(predicted_similarity)
+                if predicted_similarity < 0.9:
+                    predicted_cluster = 0
+                    predicted_similarity = 0
+                print(f"Reply for question {
+                    data.loc[index]['QUESTION']}:\n", generated_text)
+                w.write(
+                    f"Reply for index {data.loc[index]['QUESTION']}\n: {generated_text}\n")
+                print("Predicted Cluster:", predicted_cluster,
+                      "Predicted Similarity:", predicted_similarity)
+                w.write(
+                    f"Predicted Cluster: {predicted_cluster}, Predicted Similarity: {predicted_similarity}\n")
+                # 更新數據
+                if int(predicted_cluster) not in data[data['category'] == c]['cluster'].values or int(predicted_cluster) == 0:
+                    print(predicted_cluster, data['cluster'].values)
+                    predicted_cluster = data['cluster'].max() + 1
+                    reference_text += f"\nQuestion: {
+                        data.loc[index]['QUESTION']}, Cluster: {predicted_cluster}"
+                    print("Updated reference clustering data:", f"Question: {
+                        data.loc[index]['QUESTION']}, Cluster: {predicted_cluster}")
+                    w.write(
+                        f"Updated reference clustering data: Question: {data.loc[index]['QUESTION']}, Cluster: {predicted_cluster}\n")
+                data.at[index, 'cluster'] = int(predicted_cluster)
+                data.at[index, 'similarity'] = predicted_similarity
+            except Exception as e:
+                print(f"Error while processing index {index}: {str(e)}")
+                w.write(f"Error while processing index {index}: {str(e)}")
+
+        fcsv_file_name = input_csv_path.split(
+            '/')[-1].replace('.csv', '.csv')
+        fcsv_path = os.path.join(output_folder_path, fcsv_file_name)
+        foutput_data = data[['ANSWER', 'NUMBER',
+                            'QUESTION', 'YEAR', 'cluster', 'similarity', 'category']]
+        foutput_data.sort_values(by='category', inplace=True)
+        foutput_data.to_csv(fcsv_path, index=False)
+        print(f"Saved: {fcsv_path}")
 
 
 def keep_chinese(input_string):
@@ -354,9 +466,14 @@ def convert_option(survey_path, var_map_path, type):
 
 # preprocess_data('data/five_years/', 'data/five_years/five_years_by_type')
 # for i in range(1, 10):
+# tp = input("Please enter the type number: ")
+# clustering_method2(f'data/five_years/five_years_by_type/type_{tp}_sim_embed.csv',
+#                   'data/five_years/five_years_by_type')
+
 #     clustering_question(f'data/five_years/five_years_by_type/type_{i}.pkl',
 #                         'data/five_years/five_years_by_type')
-preprocess_answer('data/five_years/five_years_by_type', 'data/five_years')
+# preprocess_answer('data/five_years/five_years_by_type', 'data/five_years')
 merge_surveydata('data/five_years/five_years_by_type',
                  'data/five_years/five_years_survey_data')
-# clustering_question('data/five_years/five_years_by_type/type_4.pkl', 'data/five_years/five_years_by_type')
+clustering_question('data/five_years/five_years_by_type/type_2.pkl',
+                    'data/five_years/five_years_by_type')

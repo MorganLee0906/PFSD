@@ -1,5 +1,6 @@
 import pandas as pd
 import os
+import ast
 tp = input("Enter the type of the file: ")
 csv = pd.read_csv(f'data/five_years/five_years_by_type/type_{tp}.csv')
 sorted_csv = csv.sort_values(by='cluster')
@@ -12,11 +13,13 @@ while i < max_cluster:
         sorted_csv['YEAR'] == 'CV2008')]['QUESTION'].values, '\033[0m ')
     idx = sorted_csv[sorted_csv['cluster'] == i].index
     for j in idx:
-        print(j, sorted_csv.at[j, 'QUESTION'], sep='\t')
-        similar = str(sorted_csv.at[j, 'matched'])
-        similar = similar if similar != 'nan' else ''
+        print(j, sorted_csv.at[j, 'YEAR'],
+              sorted_csv.at[j, 'QUESTION'], sep='\t')
+        similar = str(sorted_csv.at[j, 'matched']).replace(
+            '[', '').replace(']', '').replace('\'', '')
+        similar = similar.strip('') if similar != 'nan' else ''
         sim_list = list(map(float, similar.split(','))
-                        ) if similar != '' else []
+                        ) if similar != '' and similar != ' ' else []
         for k in sim_list:
             print('\t', k, sorted_csv[(sorted_csv['cluster'] ==
                   k) & (sorted_csv['YEAR'] == 'CV2008')]['QUESTION'].values, sep='\t')
@@ -48,7 +51,8 @@ while i < max_cluster:
                 sorted_csv['YEAR'] == 'CV2008')]['QUESTION'].values, '\033[0m ')
             idx = sorted_csv[sorted_csv['cluster'] == i].index
             for j in idx:
-                print(j, sorted_csv.at[j, 'QUESTION'], sep='\t')
+                print(j, sorted_csv.loc[j, 'YEAR'],
+                      sorted_csv.at[j, 'QUESTION'], sep='\t')
                 similar = str(sorted_csv.at[j, 'matched'])
                 similar = similar if similar != 'nan' else ''
                 sim_list = list(map(float, similar.split(','))
