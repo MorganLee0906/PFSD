@@ -1,0 +1,254 @@
+Processing year: RII2000
+Processing year: RII2001
+Processing year: RIII&RIV2002
+Processing year: RR2006
+Processing year: RR2007
+Processing year: RR2008
+Processing year: RR2009
+Processing year: RR2012
+Processing year: RR2014
+Processing year: RR2018
+
+=== Building cross‑year compare_table for non‑duplicate questions ===
+Before merging, compare_table has 507 rows and 11 columns (years).
+Processing column: RII2000
+Creating new row for question: {'question': '訪問時段', 'RII2000': 'x01c/訪問時段', 'RIII&RIV2002': 'X01C/訪問時段', 'RR2007': 'x01c/訪問時段', 'RR2006': 'Z01C/訪問時段', 'RR2009': 'x01c/訪問時段', 'RR2014': 'x01c/訪問時段', 'RR2008': 'x01c/訪問時段', 'RII2001': nan, 'RR2018': 'x01c/訪問時段', 'RR2012': nan}
+Dropping 2 rows with question: x01c/訪問時段
+Creating new row for question: {'question': '主樣本年齡層', 'RII2000': 'x01b/主樣本年齡層', 'RIII&RIV2002': 'X01B/主樣本年齡層', 'RR2007': nan, 'RR2006': 'Z01B/主樣本年齡層', 'RR2009': 'x01b/主樣本年齡層', 'RR2014': 'x01b/主樣本年齡層', 'RR2008': 'x01b/主樣本年齡層', 'RII2001': 'X01B/主樣本年齡層', 'RR2018': 'x01b/主樣本年齡層', 'RR2012': nan}
+Dropping 2 rows with question: x01b/主樣本年齡層
+Creating new row for question: {'question': '除了家庭的必需開銷外，你們全家共用的錢通常是由誰來掌管呢?', 'RII2000': 'h04/除了家庭的必需開銷外，你們全家共用的錢通常是由誰來掌管呢?', 'RIII&RIV2002': nan, 'RR2007': 'e04a/除了家庭的必需開銷外，你們全家共用的錢通常是由誰來掌管呢?', 'RR2006': nan, 'RR2009': nan, 'RR2014': nan, 'RR2008': nan, 'RII2001': 'H04/除了家庭的必需開銷外，你們全家共用的錢通常是由誰來掌管呢?', 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: h04/除了家庭的必需開銷外，你們全家共用的錢通常是由誰來掌管呢?
+Creating new row for question: {'question': '您和您的配偶發生爭吵時，子女也在場嗎?', 'RII2000': 'g07/您和您的配偶發生爭吵時，子女也在場嗎?', 'RIII&RIV2002': nan, 'RR2007': nan, 'RR2006': 'D05/您和您的配偶發生爭吵時，子女也在場嗎?', 'RR2009': nan, 'RR2014': nan, 'RR2008': nan, 'RII2001': nan, 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: g07/您和您的配偶發生爭吵時，子女也在場嗎?
+Creating new row for question: {'question': '您(或您的配偶)希望這個小孩是男孩還是女孩?', 'RII2000': 'f05/您(或您的配偶)希望這個小孩是男孩還是女孩?', 'RIII&RIV2002': 'E05/您(或您的配偶)希望這個小孩是男孩還是女孩?', 'RR2007': 'f02/您(或您的配偶)希望這個小孩是男孩還是女孩?', 'RR2006': nan, 'RR2009': 'e03/您(或您的配偶)希望這個小孩是男孩還是女孩?', 'RR2014': nan, 'RR2008': 'e02/您(或您的配偶)希望這個小孩是男孩還是女孩?', 'RII2001': 'F05/您(或您的配偶)希望這個小孩是男孩還是女孩?', 'RR2018': 'd07/您(或您的配偶)希望這個小孩是男孩還是女孩?', 'RR2012': nan}
+Dropping 2 rows with question: f05/您(或您的配偶)希望這個小孩是男孩還是女孩?
+Creating new row for question: {'question': '您(或您的配偶)有沒有打算在未來(再)生一個小孩?', 'RII2000': 'f04/您(或您的配偶)有沒有打算在未來(再)生一個小孩?', 'RIII&RIV2002': 'E04/您(或您的配偶)有沒有打算在未來(再)生一個小孩?', 'RR2007': 'f01/您(或您的配偶)有沒有打算在未來(再)生一個小孩?', 'RR2006': 'E03/您(或您的配偶)有沒有打算在未來(再)生一個小孩?', 'RR2009': 'e02/您(或您的配偶)有沒有打算在未來(再)生一個小孩?', 'RR2014': 'd03/您(或您的配偶)有沒有打算在未來(再)生一個小孩?', 'RR2008': 'e01/您(或您的配偶)有沒有打算在未來(再)生一個小孩?', 'RII2001': 'F04/您(或您的配偶)有沒有打算在未來(再)生一個小孩?', 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: f04/您(或您的配偶)有沒有打算在未來(再)生一個小孩?
+Creating new row for question: {'question': '請問您的配偶平均每週大約花多少時間作家務工作?__小時', 'RII2000': 'e01b/請問您的配偶平均每週大約花多少時間作家務工作?__小時', 'RIII&RIV2002': nan, 'RR2007': 'd01b/請問您的配偶平均每週大約花多少時間作家務工作?__小時', 'RR2006': 'C01B/請問您的配偶平均每週大約花多少時間作家務工作?__小時', 'RR2009': 'c01b/請問您的配偶平均每週大約花多少時間作家務工作?', 'RR2014': 'c01b/在去年之中，請問您的配偶平均每週大約花多少時間作家務工作?__小時', 'RR2008': 'c01b/請問您的配偶平均每週大約花多少時間作家務工作?', 'RII2001': 'E01B/請問您的配偶平均每週大約花多少時間作家務工作?__小時', 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: e01b/請問您的配偶平均每週大約花多少時間作家務工作?__小時
+Creating new row for question: {'question': '在去年之中，請問您平均每週大約花多少時間作家務工作?__小時', 'RII2000': 'e01a/在去年之中，請問您平均每週大約花多少時間作家務工作?__小時', 'RIII&RIV2002': 'D01A/在去年之中，請問您平均每週大約花多少時間作家務工作?__小時', 'RR2007': 'd01a/在去年(95年)之中，請問您平均每週大約花多少時間作家務工作?__小時', 'RR2006': 'C01A/在去年(94年)之中，請問您平均每週大約花多少時間作家務工作?__小時', 'RR2009': 'c01a/在去年(97年)之中，請問您平均每週大約花多少時間作家務工作?', 'RR2014': 'c01a/在去年之中，請問您平均每週大約花多少時間作家務工作?__小時', 'RR2008': 'c01a/在去年(96年)之中，請問您平均每週大約花多少時間作家務工作?', 'RII2001': 'E01A/在去年之中，請問您平均每週大約花多少時間作家務工作?__小時', 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: e01a/在去年之中，請問您平均每週大約花多少時間作家務工作?__小時
+Creating new row for question: {'question': '請問您在未來有沒有移民到其他國家的打算?', 'RII2000': 'd01/請問您在未來有沒有移民到其他國家的打算?', 'RIII&RIV2002': 'C01/請問您在未來有沒有移民到其他國家的打算?', 'RR2007': nan, 'RR2006': nan, 'RR2009': nan, 'RR2014': nan, 'RR2008': nan, 'RII2001': nan, 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: d01/請問您在未來有沒有移民到其他國家的打算?
+Creating new row for question: {'question': '請問您(先生/太太)目前沒有工作的原因是什麼?', 'RII2000': 'c20/請問您(先生/太太)目前沒有工作的原因是什麼?', 'RIII&RIV2002': 'A26/請問您(先生/太太)目前沒有工作的原因是什麼?', 'RR2007': nan, 'RR2006': nan, 'RR2009': nan, 'RR2014': nan, 'RR2008': nan, 'RII2001': nan, 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: c20/請問您(先生/太太)目前沒有工作的原因是什麼?
+Column 'RIII&RIV2002' has multiple unique values for the same question: c06a01/按小時，按月等方式定期領薪水
+Conflict detected, skipping this question.
+Creating new row for question: {'question': '您這份工作的公司約有多少位員工?', 'RII2000': 'c04/您這份工作的公司約有多少位員工?', 'RIII&RIV2002': nan, 'RR2007': 'a08c/您這份工作的公司約有多少位員工?', 'RR2006': 'A11C/您這份工作的公司約有多少位員工?', 'RR2009': nan, 'RR2014': nan, 'RR2008': 'a08c/您這份工作的公司約有多少位員工?', 'RII2001': nan, 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: c04/您這份工作的公司約有多少位員工?
+Creating new row for question: {'question': '請問您目前沒有工作的原因是什麼?', 'RII2000': 'c02/請問您目前沒有工作的原因是什麼?', 'RIII&RIV2002': nan, 'RR2007': 'a14/請問您目前沒有工作的原因是什麼?', 'RR2006': 'A20/請問您目前沒有工作的原因是什麼?', 'RR2009': 'a14/請問您目前沒有工作的原因是什麼?', 'RR2014': nan, 'RR2008': 'a14/請問您目前沒有工作的原因是什麼', 'RII2001': 'C19/請問您目前沒有工作的原因是什麼?', 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: c02/請問您目前沒有工作的原因是什麼?
+Creating new row for question: {'question': '請問您(先生/太太)的最高教育程度是什麼?', 'RII2000': 'a08/請問您(先生/太太)的最高教育程度是什麼?', 'RIII&RIV2002': 'A17A/請問您(先生/太太)的最高教育程度是什麼?', 'RR2007': nan, 'RR2006': nan, 'RR2009': nan, 'RR2014': nan, 'RR2008': nan, 'RII2001': 'C24A/請問您(先生/太太)最高教育程度是什麼?', 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: a08/請問您(先生/太太)的最高教育程度是什麼?
+Creating new row for question: {'question': '請問您認為自己目前的健康狀況如何?', 'RII2000': 'a04/請問您認為自己目前的健康狀況如何?', 'RIII&RIV2002': 'A02/請問您認為自己目前的健康狀況如何?', 'RR2007': 'a04a/請問您認為自己目前的健康狀況如何?', 'RR2006': 'A04A/請問您認為自己目前的健康狀況如何?', 'RR2009': 'a04a/請問您認為自己目前的健康狀況如何?', 'RR2014': nan, 'RR2008': 'a04a/請問您認為自己目前的健康狀況如何?', 'RII2001': 'A04/請問您認為自己目前的健康狀況如何?', 'RR2018': 'a04a/請問您認為自己目前的健康狀況如何?', 'RR2012': 'a04a/請問您認為自己目前的健康狀況如何'}
+Dropping 2 rows with question: a04/請問您認為自己目前的健康狀況如何?
+Dropped 28 rows.
+Added 14 new rows.
+Processing column: RIII&RIV2002
+Creating new row for question: {'question': '請問您目前有幾個小孩?__個小孩', 'RII2000': nan, 'RIII&RIV2002': 'E01/請問您目前有幾個小孩?__個小孩', 'RR2007': 'b12/請問您目前有幾個小孩?', 'RR2006': 'B12E/請問您目前有幾個小孩?', 'RR2009': 'b12/請問您目前有幾個小孩?', 'RR2014': 'b13/請問您一共有幾個小孩?', 'RR2008': nan, 'RII2001': nan, 'RR2018': 'b11/請問您目前有幾個小孩?', 'RR2012': nan}
+Dropping 2 rows with question: E01/請問您目前有幾個小孩?__個小孩
+Creating new row for question: {'question': '在過去一年裡，您家中每個月的房屋貸款支出平均每月__元', 'RII2000': 'e02a/在過去一年裡，您家中每個月的房屋貸款支出平均每月__元', 'RIII&RIV2002': 'D08A/在過去一年裡，您家中每個月的平均支出情況大約是?房屋貸款支出平均每月__元', 'RR2007': 'd08a/在過去一年裡，您(和您配偶)房屋貸款支出平均每月__元', 'RR2006': 'C08A02/在過去一年裡，您家中屋貸款支出平均每月__元', 'RR2009': 'c08a/在過去一年裡，您(和您配偶)房屋貸款支出平均每月__元', 'RR2014': 'c08a/在過去一年裡，您(和您配偶)房屋貸款支出平均每月__元', 'RR2008': 'c08a/在過去一年裡，您(和您配偶)房屋貸款支出平均每月__元', 'RII2001': 'E02A/在過去一年裡，您家中房屋貸款支出平均每月__元', 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: D08A/在過去一年裡，您家中每個月的平均支出情況大約是?房屋貸款支出平均每月__元
+Creating new row for question: {'question': '在去年之中，您的家庭是否曾經得到政府的其他補助?', 'RII2000': nan, 'RIII&RIV2002': 'D07A07/在去年之中，您的家庭是否曾經得到政府的其他補助?', 'RR2007': nan, 'RR2006': 'C07A08/在去年之中，您的家庭是否曾經得到政府的其他補助?', 'RR2009': 'c06a10/在去年之中，您的家庭是否曾經得到政府的其他補助?', 'RR2014': 'c06a12/在去年之中，您的家庭是否曾經得到政府的其他補助?', 'RR2008': 'c06a09/在去年之中，您的家庭是否曾經得到政府的其他補助', 'RII2001': nan, 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: D07A07/在去年之中，您的家庭是否曾經得到政府的其他補助?
+Creating new row for question: {'question': '在去年之中，您的家庭是否曾經得到政府的兒童托育補助?', 'RII2000': nan, 'RIII&RIV2002': 'D07A05/在去年之中，您的家庭是否曾經得到政府的兒童托育補助?', 'RR2007': 'd06a04/在去年之中，您的家庭是否曾經得到政府的兒童托育補助?', 'RR2006': 'C07A04/在去年之中，您的家庭是否曾經得到政府的兒童托育補助?', 'RR2009': 'c06a04/在去年之中，您的家庭是否曾經得到政府的兒童托育補助?', 'RR2014': nan, 'RR2008': 'c06a04/在去年之中，您的家庭是否曾經得到政府的兒童托育補助', 'RII2001': nan, 'RR2018': 'c15b05/在去年(106年)之中，您的家庭是否曾經得到政府的兒童托育補助?', 'RR2012': nan}
+Dropping 2 rows with question: D07A05/在去年之中，您的家庭是否曾經得到政府的兒童托育補助?
+Creating new row for question: {'question': '在去年之中，您的家庭是否曾經得到政府的傷病醫療費用補助?', 'RII2000': nan, 'RIII&RIV2002': 'D07A02/在去年之中，您的家庭是否曾經得到政府的傷病醫療費用補助?', 'RR2007': 'd06a02/在去年之中，您的家庭是否曾經得到政府的傷病醫療費用補助?', 'RR2006': 'C07A02/在去年之中，您的家庭是否曾經得到政府的傷病醫療費用補助?', 'RR2009': nan, 'RR2014': 'c06a02/在去年之中，您的家庭是否曾經得到政府的傷病醫療費用補助?', 'RR2008': 'c06a02/在去年之中，您的家庭是否曾經得到政府的傷病醫療費用補助', 'RII2001': nan, 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: D07A02/在去年之中，您的家庭是否曾經得到政府的傷病醫療費用補助?
+Creating new row for question: {'question': '在去年之中，您的家庭是否曾經得到政府的中低收入戶生活補助?', 'RII2000': nan, 'RIII&RIV2002': 'D07A01/在去年之中，您的家庭是否曾經得到政府的中低收入戶生活補助?', 'RR2007': 'd06a01/在去年之中，您的家庭是否曾經得到政府的中低收入戶生活補助?', 'RR2006': nan, 'RR2009': 'c06a01/在去年之中，您的家庭是否曾經得到政府的中低收入戶生活補助?', 'RR2014': 'c06a01/在去年之中，您的家庭是否曾經得到政府的中低收入戶生活補助?', 'RR2008': 'c06a01/在去年之中，您的家庭是否曾經得到政府的中低收入戶生活補助', 'RII2001': nan, 'RR2018': 'c15b01/在去年(106年)之中，您的家庭是否曾經得到政府的中低收入戶生活補助?', 'RR2012': nan}
+Dropping 2 rows with question: D07A01/在去年之中，您的家庭是否曾經得到政府的中低收入戶生活補助?
+Creating new row for question: {'question': '在去年之中，您的家庭是否曾經從朋友或同事得到資助或貸款?', 'RII2000': nan, 'RIII&RIV2002': 'C15Z04/在去年之中，您的家庭是否曾經從朋友或同事得到資助或貸款?', 'RR2007': 'b17z04/在去年之中，您的家庭是否曾經從朋友或同事得到資助或貸款?', 'RR2006': 'B17Z04/在去年(94年)之中，您的家庭是否曾經從朋友或同事得到資助或貸款?', 'RR2009': 'b39z04/在去年(97)之中，您的家庭是否曾經從朋友或同事得到資助或貸款?', 'RR2014': nan, 'RR2008': 'b22z04/在去年之中，您的家庭是否曾經從朋友或同事得到資助或貸款?', 'RII2001': nan, 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: C15Z04/在去年之中，您的家庭是否曾經從朋友或同事得到資助或貸款?
+Creating new row for question: {'question': '子女4:排行', 'RII2000': nan, 'RIII&RIV2002': 'C13AC4/(子女4)排行', 'RR2007': nan, 'RR2006': 'B13AC4/子女4:排行', 'RR2009': nan, 'RR2014': nan, 'RR2008': nan, 'RII2001': 'D11AC4/子女4:排行', 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: C13AC4/(子女4)排行
+Creating new row for question: {'question': '子女2:排行', 'RII2000': nan, 'RIII&RIV2002': 'C13AC2/(子女2)排行', 'RR2007': nan, 'RR2006': 'B13AC2/子女2:排行', 'RR2009': nan, 'RR2014': nan, 'RR2008': nan, 'RII2001': 'D11AC2/子女2:排行', 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: C13AC2/(子女2)排行
+Creating new row for question: {'question': '請問您配偶母親目前的健康情形如何?', 'RII2000': nan, 'RIII&RIV2002': 'C12D/請問您配偶母親目前的健康情形如何?', 'RR2007': 'b14e/請問您配偶母親目前的健康情形如何?', 'RR2006': 'B12D/請問您配偶母親目前的健康情形如何?', 'RR2009': 'b18e/請問您配偶母親目前的健康情形如何?', 'RR2014': 'b23bm2/請問您配偶母親目前的健康狀況?', 'RR2008': 'b18c/請問您配偶母親目前的健康情形如何?', 'RII2001': 'D10D/請問您配偶母親目前的健康情形如何?', 'RR2018': 'b19am2/請問您配偶母親目前的健康狀況?', 'RR2012': nan}
+Dropping 2 rows with question: C12D/請問您配偶母親目前的健康情形如何?
+Creating new row for question: {'question': '請問您配偶父親目前的健康情形如何?', 'RII2000': nan, 'RIII&RIV2002': 'C12C/請問您配偶父親目前的健康情形如何?', 'RR2007': nan, 'RR2006': 'B12C/請問您配偶父親目前的健康情形如何?', 'RR2009': 'b18d/請問您配偶父親目前的健康情形如何?', 'RR2014': 'b23bf2/請問您配偶父親目前的健康狀況?', 'RR2008': 'b18b/請問您配偶父親目前的健康情形如何?', 'RII2001': 'D10C/請問您配偶父親目前的健康情形如何?', 'RR2018': 'b19af2/請問您配偶父親目前的健康狀況?', 'RR2012': nan}
+Dropping 2 rows with question: C12C/請問您配偶父親目前的健康情形如何?
+Creating new row for question: {'question': '請問您母親目前的健康情形如何?', 'RII2000': nan, 'RIII&RIV2002': 'C12B/請問您母親目前的健康情形如何?', 'RR2007': 'b14b/請問您母親目前的健康情形如何?', 'RR2006': 'B12B/請問您母親目前的健康情形如何?', 'RR2009': 'b14b/請問您母親目前的健康情形如何?', 'RR2014': 'b20am1/請問您母親目前的健康狀況?', 'RR2008': 'b14b/請問您母親目前的健康情形如何?', 'RII2001': 'D10B/請問您母親目前的健康情形如何?', 'RR2018': 'b14am1/請問您母親目前的健康狀況?', 'RR2012': nan}
+Dropping 2 rows with question: C12B/請問您母親目前的健康情形如何?
+Creating new row for question: {'question': '請問您現在的住宅有沒有做其他用途?', 'RII2000': nan, 'RIII&RIV2002': 'C09/請問您現在的住宅有沒有做其他用途?', 'RR2007': nan, 'RR2006': 'B10/請問您現在的住宅有沒有做其他用途?', 'RR2009': 'b10/請問您現在的住宅有沒有做其他用途?', 'RR2014': 'b08/請問您現在的住宅有沒有做其他用途?', 'RR2008': 'b10/請問您現在的住宅有沒有做其他用途?', 'RII2001': 'D08/請問您現在的住宅有沒有做其他用途?', 'RR2018': nan, 'RR2012': 'b10/請問您現在的住宅有沒有做其他用途'}
+Dropping 2 rows with question: C09/請問您現在的住宅有沒有做其他用途?
+Creating new row for question: {'question': '住宅在第幾層樓?住在第__樓', 'RII2000': nan, 'RIII&RIV2002': 'C08H/住宅在第幾層樓?住在第__樓', 'RR2007': nan, 'RR2006': nan, 'RR2009': 'b08h/住宅在第幾層樓?住在第__樓', 'RR2014': 'b06h/住宅在第幾層樓?住在第__樓', 'RR2008': 'b08h/住宅在第幾層樓?住在第__樓', 'RII2001': 'D07H/住宅在第幾層樓?住在第__樓', 'RR2018': 'b03h/住宅在第幾層樓?住在第__樓', 'RR2012': nan}
+Dropping 2 rows with question: C08H/住宅在第幾層樓?住在第__樓
+Creating new row for question: {'question': '您最主要用什麼方法找尋工作?', 'RII2000': nan, 'RIII&RIV2002': 'A13B/您最主要用什麼方法找尋工作?', 'RR2007': 'a15c/您最主要用什麼方法找尋工作?', 'RR2006': 'A21B/您最主要用什麼方法找尋工作?', 'RR2009': 'a15c/您最主要用什麼方法找尋工作?', 'RR2014': nan, 'RR2008': 'a15c/您最主要用什麼方法找尋工作?', 'RII2001': nan, 'RR2018': 'a16b/您最主要用什麼方法找尋工作?', 'RR2012': 'a15b/您最主要用什麼方法找尋工作'}
+Dropping 2 rows with question: A13B/您最主要用什麼方法找尋工作?
+Creating new row for question: {'question': '請問這份兼差是在為誰工作?', 'RII2000': nan, 'RIII&RIV2002': 'A11B/請問這份兼差是在為誰工作?', 'RR2007': 'a13b/請問這份兼差是在為誰工作?', 'RR2006': 'A19B/請問這份兼差是在為誰工作?', 'RR2009': 'a13b/請問這份兼差是在為誰工作?', 'RR2014': 'a13b/請問這份兼差是在為誰工作?', 'RR2008': 'a13b/請問這份兼差是在為誰工作?', 'RII2001': nan, 'RR2018': 'a14b/請問這份兼差是在為誰工作?', 'RR2012': 'a13b/請問這份兼差是在為誰工作'}
+Dropping 2 rows with question: A11B/請問這份兼差是在為誰工作?
+Creating new row for question: {'question': '請問過去一年來，您的生活過得好不好?', 'RII2000': nan, 'RIII&RIV2002': 'A01/請問過去一年來，您的生活過得好不好?', 'RR2007': 'a03b/請問過去一年來，您的生活過得好不好?(1代表很不好，7代表很好)', 'RR2006': 'A03/請問過去一年來，您的生活過得好不好?', 'RR2009': 'a03b/請問過去一年來，您的生活過得好不好?(1代表很不好，7代表很好)', 'RR2014': 'a03b/請問過去一年來，您的生活過得好不好?', 'RR2008': 'a03b/請問過去一年來，您的生活過得好不好?(01代表很不好，07代表很好)', 'RII2001': nan, 'RR2018': 'a03d/請問過去一年來，您的生活過得好不好?', 'RR2012': nan}
+Dropping 2 rows with question: A01/請問過去一年來，您的生活過得好不好?
+Dropped 34 rows.
+Added 17 new rows.
+Processing column: RR2007
+Creating new row for question: {'question': '受訪者與戶籍地戶長之關係', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': 'x07/受訪者與戶籍地戶長之關係', 'RR2006': nan, 'RR2009': 'x07/受訪者與戶籍地戶長之關係', 'RR2014': 'x07/受訪者與戶籍地戶長之關係', 'RR2008': nan, 'RII2001': nan, 'RR2018': nan, 'RR2012': 'x07/受訪者與戶籍地戶長之關係'}
+Dropping 2 rows with question: x07/受訪者與戶籍地戶長之關係
+Creating new row for question: {'question': '在過去一年裡，您(和您配偶)保姆或幫傭(包括家事管理)支出平均每月__元?', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': 'd08c/在過去一年裡，您(和您配偶)保姆或幫傭(包括家事管理)支出平均每月__元', 'RR2006': nan, 'RR2009': 'c08c/在過去一年裡，您(和您配偶)保姆或幫傭(包括家事管理)支出平均每月__元', 'RR2014': 'c08b/在過去一年裡，您(和您配偶)保姆或幫傭(包括家事管理)支出平均每月__元', 'RR2008': nan, 'RII2001': nan, 'RR2018': 'c16b/在過去一年裡，您(和您配偶)保姆或幫傭(包括家事管理)支出平均每月__元?', 'RR2012': nan}
+Dropping 2 rows with question: d08c/在過去一年裡，您(和您配偶)保姆或幫傭(包括家事管理)支出平均每月__元
+Creating new row for question: {'question': '在過去一年裡，您(和您配偶)標會支出死會平均每月__元', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': 'd08b02/在過去一年裡，您(和您配偶)標會支出死會平均每月__元', 'RR2006': nan, 'RR2009': 'c08b02/在過去一年裡，您(和您配偶)標會支出死會平均每月__元', 'RR2014': nan, 'RR2008': 'c08b02/在過去一年裡，您(和您配偶)死會平均每月__元', 'RII2001': nan, 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: d08b02/在過去一年裡，您(和您配偶)標會支出死會平均每月__元
+Creating new row for question: {'question': '您對目前的家庭生活滿意嗎?', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': 'd07e/您對目前的家庭生活滿意嗎?', 'RR2006': nan, 'RR2009': 'c07b/您對目前的家庭生活滿意嗎?', 'RR2014': 'c07b/您對目前的家庭生活滿意嗎?', 'RR2008': 'c07b/您對目前的家庭生活滿意嗎?', 'RII2001': nan, 'RR2018': 'b08/您對目前的家庭生活滿意嗎?', 'RR2012': nan}
+Dropping 2 rows with question: d07e/您對目前的家庭生活滿意嗎?
+Creating new row for question: {'question': '在去年之中，您的家庭是否曾經得到政府的身心障礙者補助?', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': 'd06a07/在去年之中，您的家庭是否曾經得到政府的身心障礙者補助?', 'RR2006': 'C07A07/在去年之中，您的家庭是否曾經得到政府的身心障礙者補助?', 'RR2009': 'c06a07/在去年之中，您的家庭是否曾經得到政府的身心障礙者補助?', 'RR2014': 'c06a07/在去年之中，您的家庭是否曾經得到政府的身心障礙者補助?', 'RR2008': 'c06a07/在去年之中，您的家庭是否曾經得到政府的身心障礙者補助', 'RII2001': nan, 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: d06a07/在去年之中，您的家庭是否曾經得到政府的身心障礙者補助?
+Creating new row for question: {'question': '除了上面所談到的這些收入之外，您或您的配偶是否有利息收入?', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': 'd05z01/除了上面所談到的這些收入之外，您或您的配偶是否有利息收入?', 'RR2006': 'C05Z01/除了上面所談到的這些收入之外，您或您的配偶是否有利息收入?', 'RR2009': 'c05z01/除了上面所談到的這些收入之外，您或您的配偶是否有利息收入?', 'RR2014': nan, 'RR2008': 'c05z01/除了上面所談到的這些收入之外，您或您的配偶是否有利息收入', 'RII2001': nan, 'RR2018': 'c14z01/除了上面所談到的這些收入之外，您或您的配偶是否有利息收入?', 'RR2012': nan}
+Dropping 2 rows with question: d05z01/除了上面所談到的這些收入之外，您或您的配偶是否有利息收入?
+Creating new row for question: {'question': '在去年之中，您是否曾經領取退休金?(1999及2000抽樣樣本作答)', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': 'd04a01/在去年(95年)之中，您是否曾經領取退休金?', 'RR2006': nan, 'RR2009': 'c04a01/在去年(97年)之中，您是否曾經領取退休金?', 'RR2014': 'c04a01/在去年之中，您是否曾經領取退休金?(1999及2000抽樣樣本作答)', 'RR2008': 'c04a01/在去年(96年)之中，您是否曾經領取退休金?', 'RII2001': nan, 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: d04a01/在去年(95年)之中，您是否曾經領取退休金?
+Creating new row for question: {'question': '請問您的父親平常是否住在安養機構', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': 'b15d10/請問您的父親平常有沒有住安養機構?', 'RR2006': nan, 'RR2009': 'b16a10/請問您的父親平常是否住安養機構?', 'RR2014': 'b20b10f1/請問您的父親平常住安養機構?', 'RR2008': 'b15d10/請問您的父親平常是否住在安養機構', 'RII2001': nan, 'RR2018': 'b15a10f1/請問您的父親平常住安養機構?', 'RR2012': nan}
+Dropping 2 rows with question: b15d10/請問您的父親平常有沒有住安養機構?
+Creating new row for question: {'question': '請問您的父親平常是否獨居', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': 'b15d09/請問您的父親平常有沒有獨居?', 'RR2006': nan, 'RR2009': 'b16a09/請問您的父親平常是否獨居?', 'RR2014': 'b20b09f1/請問您的父親平常獨居?', 'RR2008': 'b15d09/請問您的父親平常是否獨居', 'RII2001': nan, 'RR2018': 'b15a09f1/請問您的父親平常獨居?', 'RR2012': nan}
+Dropping 2 rows with question: b15d09/請問您的父親平常有沒有獨居?
+Creating new row for question: {'question': '請問您配偶父親目前的住處與您的距離多遠?', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': 'b14gf2/配偶父親住處與您的距離多遠?', 'RR2006': nan, 'RR2009': 'b20c/請問您配偶父親目前的住處與您的距離多遠?', 'RR2014': nan, 'RR2008': 'b20b/請問您配偶父親目前的住處與您的距離多遠?', 'RII2001': nan, 'RR2018': 'b20bf2/您配偶父親目前住處與您的距離多遠?', 'RR2012': nan}
+Dropping 3 rows with question: b14gf2/配偶父親住處與您的距離多遠?
+Creating new row for question: {'question': '請問您配偶父親的最高教育程度是什麼?', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': 'b14c/請問您配偶父親的最高教育程度是什麼?', 'RR2006': nan, 'RR2009': 'b18a/請問您配偶父親的最高教育程度是什麼?', 'RR2014': nan, 'RR2008': 'b18a/請問您配偶父親的最高教育程度是什麼?', 'RII2001': nan, 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: b14c/請問您配偶父親的最高教育程度是什麼?
+Creating new row for question: {'question': '請問過去一年來，您的子女有沒有給您(或您配偶)零用金，生活費或節慶紅包?', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': 'b13j01/請問過去一年來，您的子女有沒有給您(或您配偶)零用金，生活費或節慶紅包?', 'RR2006': nan, 'RR2009': nan, 'RR2014': 'b15a01/過去一年，您的子女有沒有給您或您配偶零用金、生活費或節慶紅包?', 'RR2008': 'b13j01/請問過去一年來，您的子女有沒有給您(或您配偶)零用金、生活費或節慶紅包?', 'RII2001': nan, 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: b13j01/請問過去一年來，您的子女有沒有給您(或您配偶)零用金，生活費或節慶紅包?
+Creating new row for question: {'question': '健在子女2:教育程度', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': 'b13dc2/健在子女2:教育程度', 'RR2006': nan, 'RR2009': 'b13dc2/健在子女2:教育程度', 'RR2014': 'b14dc2/子女2教育程度', 'RR2008': 'b13dc2/子女2教育程度', 'RII2001': nan, 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: b13dc2/健在子女2:教育程度
+Creating new row for question: {'question': '您搬家的主要原因是什麼?', 'RII2000': nan, 'RIII&RIV2002': 'C06/您搬家的主要原因是什麼?', 'RR2007': 'b07/您搬遷的主要原因是什麼?', 'RR2006': 'B07/您搬遷的主要原因是什麼?', 'RR2009': 'b07/您搬遷的主要原因是什麼?', 'RR2014': 'b05/您搬遷的主要原因是什麼?', 'RR2008': 'b07/您搬遷的主要原因是什麼?', 'RII2001': 'D06/您搬家的主要原因是什麼?', 'RR2018': 'b02/您搬遷的主要原因是什麼?', 'RR2012': 'b07/您搬遷的主要原因是什麼'}
+Dropping 2 rows with question: b07/您搬遷的主要原因是什麼?
+Creating new row for question: {'question': '請問您去年一年有沒有搬家?', 'RII2000': nan, 'RIII&RIV2002': 'C05/請問您去年一年有沒有搬家?', 'RR2007': 'b06/請問您去年一年有沒有搬遷(搬住的地方)?', 'RR2006': 'B06/請問您去年一年有沒有搬遷(搬住的地方)?', 'RR2009': nan, 'RR2014': nan, 'RR2008': 'b06/請問您去年一年有沒有搬遷(搬住的地方)?', 'RII2001': 'D05/請問您去年一年有沒有搬家?', 'RR2018': nan, 'RR2012': nan}
+Dropping 3 rows with question: b06/請問您去年一年有沒有搬遷(搬住的地方)?
+Creating new row for question: {'question': '請問您有接受這個新的工作機會嗎?', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': 'b05c/請問您有接受這個新的工作機會嗎?', 'RR2006': 'B05C/請問您有接受這個新的工作機會嗎?', 'RR2009': 'b05c/請問您有接受這個新的工作機會嗎?', 'RR2014': nan, 'RR2008': 'b05c/請問您有接受這個新的工作機會嗎?', 'RII2001': nan, 'RR2018': nan, 'RR2012': 'b05c/請問您有接受這個新的工作機會嗎'}
+Dropping 2 rows with question: b05c/請問您有接受這個新的工作機會嗎?
+Creating new row for question: {'question': '請問您在未來有沒有移民到台灣以外地區的打算?', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': 'b01/請問您在未來有沒有移民到台灣以外地區的打算?', 'RR2006': 'B01/請問您在未來有沒有移民到台灣以外地區的打算?', 'RR2009': 'b01/請問您在未來有沒有移民到台灣以外地區的打算?', 'RR2014': 'b01/請問您在未來有沒有移民到台灣以外地區的打算?', 'RR2008': 'b01/請問您在未來有沒有移民到台灣以外地區的打算?', 'RII2001': nan, 'RR2018': nan, 'RR2012': 'b01/請問您在未來有沒有移民到台灣以外地區的打算'}
+Dropping 2 rows with question: b01/請問您在未來有沒有移民到台灣以外地區的打算?
+Creating new row for question: {'question': '(他/她)這份工作平均每個月的總收入大約有多少?', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': 'a25b/(他/她)這份工作平均每個月的總收入大約有多少?', 'RR2006': 'A31B/(他/她)這份工作平均每個月的總收入大約有多少?', 'RR2009': nan, 'RR2014': 'a32b/(他/她)這份工作平均每個月的總收入大約有多少?', 'RR2008': 'a25b/(他/她)這份工作平均每個月的總收入大約有多少?', 'RII2001': nan, 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: a25b/(他/她)這份工作平均每個月的總收入大約有多少?
+Creating new row for question: {'question': '(他/她)這份工作收入是按件計酬?', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': 'a25a07/(他/她)這份工作收入是按件計酬?', 'RR2006': 'A31A05/(他/她)這份工作收入是按件計酬?', 'RR2009': 'a25c04/(他/她)這份工作收入是按件計酬?', 'RR2014': 'a32c04/(他/她)這份工作收入是按件計酬?', 'RR2008': 'a25a07/(他/她)這份工作收入是否按件計酬', 'RII2001': nan, 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: a25a07/(他/她)這份工作收入是按件計酬?
+Creating new row for question: {'question': '(他/她)這份工作收入是獎金，分紅等不固定的收入?', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': 'a25a05/(他/她)這份工作收入是獎金，分紅等不固定的收入?', 'RR2006': 'A31A03/(他/她)這份工作收入是獎金，分紅等不固定的收入?', 'RR2009': nan, 'RR2014': 'a32c03/(他/她)這份工作收入是獎金(不含年終獎金)，分紅等不固定的收入?', 'RR2008': 'a25a05/(他/她)這份工作是否獎金、分紅等不固定的收入', 'RII2001': nan, 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: a25a05/(他/她)這份工作收入是獎金，分紅等不固定的收入?
+Creating new row for question: {'question': '(他/她)這份工作的工作地點地區碼', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': 'a24b02/(他/她)這份工作的工作地點地區碼', 'RR2006': nan, 'RR2009': nan, 'RR2014': 'a31c02/(他/她)這份工作的工作地點地區碼是?', 'RR2008': nan, 'RII2001': nan, 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: a24b02/(他/她)這份工作的工作地點地區碼
+Creating new row for question: {'question': '(他/她)這份工作的工作地點是在那裡?', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': 'a24b01/(他/她)這份工作的工作地點是在那裡?', 'RR2006': nan, 'RR2009': 'a24b01/(他/她)這份工作的工作地點是在那裡?', 'RR2014': 'a31c01/(他/她)這份工作的工作地點是在那裡?', 'RR2008': 'a24b01/(他/她)這份工作的工作地點是在那裡?', 'RII2001': nan, 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: a24b01/(他/她)這份工作的工作地點是在那裡?
+Creating new row for question: {'question': '(他/她)這份工作的公司約有多少位員工?', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': 'a23c/(他/她)這份工作的公司約有多少位員工?', 'RR2006': 'A29C/(他/她)這份工作的公司約有多少位員工?', 'RR2009': nan, 'RR2014': nan, 'RR2008': nan, 'RII2001': nan, 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: a23c/(他/她)這份工作的公司約有多少位員工?
+Creating new row for question: {'question': '請問(他/她)是在為誰工作?', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': 'a23b/請問(他/她)是在為誰工作?', 'RR2006': 'A29B/請問(他/她)是在為誰工作?', 'RR2009': 'a23b/請問(他/她)是在為誰工作?', 'RR2014': 'a30/請問(他/她)是在為誰工作?', 'RR2008': nan, 'RII2001': nan, 'RR2018': nan, 'RR2012': 'a23b/請問(他/她)是在為誰工作'}
+Dropping 2 rows with question: a23b/請問(他/她)是在為誰工作?
+Creating new row for question: {'question': '請問(他/她)目前有工作嗎?', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': 'a21a/請問(他/她)目前有工作嗎?', 'RR2006': 'A27A/請問(他/她)目前有工作嗎?', 'RR2009': 'a20/請問(他/她)目前有工作嗎?', 'RR2014': 'a29/請問(他/她)目前有工作嗎?', 'RR2008': 'a21a/請問(他/她)目前有工作嗎?', 'RII2001': nan, 'RR2018': nan, 'RR2012': 'a20/請問(他/她)目前有工作嗎'}
+Dropping 2 rows with question: a21a/請問(他/她)目前有工作嗎?
+Creating new row for question: {'question': '請問(他/她)的最高教育程度是什麼?', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': 'a19/請問(他/她)的最高教育程度是什麼?', 'RR2006': 'A25A/請問(他/她)的最高教育程度是什麼?', 'RR2009': 'a18/請問(他/她)的最高教育程度是什麼?', 'RR2014': 'a27/請問(他/她)的最高教育程度是什麼?', 'RR2008': 'a19/請問(他/她)的最高教育程度是什麼?', 'RII2001': nan, 'RR2018': nan, 'RR2012': 'a18/請問(他/她)的最高教育程度是什麼'}
+Dropping 2 rows with question: a19/請問(他/她)的最高教育程度是什麼?
+Creating new row for question: {'question': '您這份工作收入是用其他方式領的，每月平均約__元', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': 'a10a10/您這份工作收入是有其他來源，每月平均約__元', 'RR2006': nan, 'RR2009': nan, 'RR2014': nan, 'RR2008': 'a10a10/您這份工作收入是用其他方式領的，每月平均約__元', 'RII2001': nan, 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: a10a10/您這份工作收入是有其他來源，每月平均約__元
+Column 'RR2018' has multiple unique values for the same question: a10a07/您這份工作收入是按件計酬?
+Conflict detected, skipping this question.
+Creating new row for question: {'question': '您這份工作的地點是在那裡?', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': 'a09b01/您這份工作的工作地點是在那裡?', 'RR2006': nan, 'RR2009': 'a09f01/您這份工作的工作地點是在那裡?', 'RR2014': 'a07c01/您這份工作的工作地點是在那裡?', 'RR2008': 'a09b01/您這份工作的工作地點是在那裡?', 'RII2001': 'C06Z01/您這份工作的地點是在那裡?', 'RR2018': 'a08c01/您這份工作的工作地點是在那裡?', 'RR2012': nan}
+Dropping 2 rows with question: a09b01/您這份工作的工作地點是在那裡?
+Dropped 58 rows.
+Added 28 new rows.
+Processing column: RR2006
+Creating new row for question: {'question': '除了上面所談到的這些收入之外，您或您的配偶是否有租金收入?', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': 'd05z03/除了上面所談到的這些收入之外，您或您的配偶是否有租金收入?', 'RR2006': 'C05Z03/除了上面所談到的這些收入之外，您或您的配偶是否有租金收入?', 'RR2009': 'c05z03/除了上面所談到的這些收入之外，您或您的配偶是否有租金收入?', 'RR2014': nan, 'RR2008': 'c05z03/除了上面所談到的這些收入之外，您或您的配偶是否有租金收入', 'RII2001': nan, 'RR2018': 'c14z03/除了上面所談到的這些收入之外，您或您的配偶是否有租金收入?', 'RR2012': nan}
+Dropping 2 rows with question: C05Z03/除了上面所談到的這些收入之外，您或您的配偶是否有租金收入?
+Creating new row for question: {'question': '居住約幾個月?', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': nan, 'RR2006': 'B08F/居住約幾個月?', 'RR2009': 'b08f/居住約幾個月?', 'RR2014': nan, 'RR2008': 'b08f/居住約幾個月?', 'RII2001': nan, 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: B08F/居住約幾個月?
+Creating new row for question: {'question': '在正常的情形下，(他/她)這份工作平均每週大約工作幾個小時?', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': nan, 'RR2006': 'A32/在正常的情形下，(他/她)這份工作平均每週大約工作幾個小時?', 'RR2009': 'a26a/在正常的情形下，(他/她)這份工作平均每週大約工作幾個小時?', 'RR2014': 'a33b/在正常的情形下，(他/她)這份工作平均每週大約工作幾個小時?', 'RR2008': 'a26a/在正常的情形下，(他/她)這份工作平均每週大約工作幾個小時?', 'RII2001': nan, 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: A32/在正常的情形下，(他/她)這份工作平均每週大約工作幾個小時?
+Creating new row for question: {'question': '請問(他/她)是否自願離開原來的工作單位?', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': 'a22a/請問(他/她)是否自願離開原來的工作單位?', 'RR2006': 'A28A/請問(他/她)是否自願離開原來的工作單位?', 'RR2009': 'a22a/請問(他/她)是否自願離開原來的工作?', 'RR2014': nan, 'RR2008': 'a22a/請問(他/她)是否自願離開原來的工作(單位)?', 'RII2001': nan, 'RR2018': nan, 'RR2012': 'a22a/請問(他/她)是否自願離開原來的工作'}
+Dropping 2 rows with question: A28A/請問(他/她)是否自願離開原來的工作單位?
+Creating new row for question: {'question': '請問(他/她)目前的健康狀況如何?', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': 'a20/請問(他/她)目前的健康狀況如何?', 'RR2006': 'A26/請問(他/她)目前的健康狀況如何?', 'RR2009': 'a19/請問(他/她)目前的健康狀況如何?', 'RR2014': 'a28/請問(他/她)目前的健康狀況如何?', 'RR2008': 'a20/請問(他/她)目前的健康狀況如何?', 'RII2001': nan, 'RR2018': nan, 'RR2012': 'a19/請問(他/她)目前的健康狀況如何'}
+Dropping 2 rows with question: A26/請問(他/她)目前的健康狀況如何?
+Creating new row for question: {'question': '請問您(先生/太太)的父親最高教育程度是什麼?', 'RII2000': nan, 'RIII&RIV2002': 'A17B/請問您(先生/太太)的父親最高教育程度是什麼?', 'RR2007': nan, 'RR2006': 'A25B/請問(他/她)的父親最高教育程度是什麼?', 'RR2009': nan, 'RR2014': nan, 'RR2008': nan, 'RII2001': 'C24B/請問您(先生/太太)的父親最高教育程度是什麼?', 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: A25B/請問(他/她)的父親最高教育程度是什麼?
+Creating new row for question: {'question': '請問(他/她)是原住民，台灣閩南人，台灣客家人還是外省人(大陸各省市)?', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': nan, 'RR2006': 'A24/請問(他/她)是原住民，台灣閩南人，台灣客家人還是外省人(大陸各省市)?', 'RR2009': nan, 'RR2014': nan, 'RR2008': 'a18/請問(他/她)是原住民、台灣閩南人、台灣客家人還是外省人(大陸各省市)?', 'RII2001': nan, 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: A24/請問(他/她)是原住民，台灣閩南人，台灣客家人還是外省人(大陸各省市)?
+Column 'RR2018' has multiple unique values for the same question: A13A05/您這份工作收入是按件計酬?
+Conflict detected, skipping this question.
+Dropped 14 rows.
+Added 7 new rows.
+Processing column: RR2009
+Creating new row for question: {'question': '在過去兩年(105，106年)之中，您是否曾經領取退休金?', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': nan, 'RR2006': nan, 'RR2009': 'c04a01/在去年(97年)之中，您是否曾經領取退休金?', 'RR2014': nan, 'RR2008': nan, 'RII2001': nan, 'RR2018': 'c09d01/在過去兩年(105，106年)之中，您是否曾經領取退休金?', 'RR2012': nan}
+Dropping 2 rows with question: c04a01/在去年(97年)之中，您是否曾經領取退休金?
+Creating new row for question: {'question': '在去年之中，如果您配偶有工作的話，全部的工作收入大約有多少?_____元?', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': nan, 'RR2006': nan, 'RR2009': 'c03b01/在去年(97年)之中，如果您的配偶有工作的話，全部的工作收入大約有多少?', 'RR2014': 'c03b02/在去年之中，如果您配偶有工作的話，全部的工作收入大約有多少?_____元?', 'RR2008': nan, 'RII2001': nan, 'RR2018': nan, 'RR2012': nan}
+Dropping 3 rows with question: c03b01/在去年(97年)之中，如果您的配偶有工作的話，全部的工作收入大約有多少?
+Creating new row for question: {'question': '在去年(106年)之中，如果您有工作的話，全部的工作收入大約有多少?', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': nan, 'RR2006': nan, 'RR2009': 'c03a01/在去年(97年)之中，如果您有工作的話，全部的工作收入大約有多少?', 'RR2014': nan, 'RR2008': nan, 'RII2001': nan, 'RR2018': 'c04a01/在去年(106年)之中，如果您有工作的話，全部的工作收入大約有多少?', 'RR2012': nan}
+Dropping 2 rows with question: c03a01/在去年(97年)之中，如果您有工作的話，全部的工作收入大約有多少?
+Creating new row for question: {'question': '在去年(95年)之中，您(或您的配偶)有沒有經營，投資事業或做生意?', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': 'd02z01/在去年(95年)之中，您(或您的配偶)有沒有經營，投資事業或做生意?', 'RR2006': nan, 'RR2009': 'c02z01/在去年(97年)之中，您(或您的配偶)有沒有經營，投資事業或做生意?', 'RR2014': nan, 'RR2008': nan, 'RII2001': nan, 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: c02z01/在去年(97年)之中，您(或您的配偶)有沒有經營，投資事業或做生意?
+Creating new row for question: {'question': '請問您的配偶母親去年到現在是否改變住處?', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': nan, 'RR2006': nan, 'RR2009': 'b21b/請問您配偶母親去年到現在有否改變住處?', 'RR2014': 'b23dm2/請問您的配偶母親去年到現在是否改變住處?', 'RR2008': 'b21a/請問您配偶母親去年到現在有否改變住處?', 'RII2001': nan, 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: b21b/請問您配偶母親去年到現在有否改變住處?
+Creating new row for question: {'question': '配偶父親去年到現在有否改變住處?', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': 'b14ff2/配偶父親去年到現在有否改變住處?', 'RR2006': 'B13GF2/配偶父親去年到現在有否改變住處?', 'RR2009': 'b20b/請問您配偶的父親去年到現在有否改變住處?', 'RR2014': nan, 'RR2008': 'b20a/請問您配偶的父親去年到現在有否改變住處?', 'RII2001': nan, 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: b20b/請問您配偶的父親去年到現在有否改變住處?
+Creating new row for question: {'question': '請問下列哪一種方式領取的收入最多?', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': nan, 'RR2006': nan, 'RR2009': 'a25d/請問下列哪一種方式領取的收入最多?', 'RR2014': 'a32d/請問下列哪一種方式領取的收入最多?', 'RR2008': nan, 'RII2001': nan, 'RR2018': 'a33c/請問下列哪一種方式領取的收入最多?', 'RR2012': 'a25d/請問下列哪一種方式領取的收入最多'}
+Dropping 2 rows with question: a25d/請問下列哪一種方式領取的收入最多?
+Creating new row for question: {'question': '(他/她)這份工作收入是否用其他方式領的', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': nan, 'RR2006': nan, 'RR2009': 'a25c05/(他/她)這份工作收入是其他方式支領的?', 'RR2014': 'a32c05/(他/她)這份工作收入是其他方式領取?', 'RR2008': 'a25a09/(他/她)這份工作收入是否用其他方式領的', 'RII2001': nan, 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: a25c05/(他/她)這份工作收入是其他方式支領的?
+Column 'RR2018' has multiple unique values for the same question: a10c04/您這份工作收入是按件計酬?
+Conflict detected, skipping this question.
+Creating new row for question: {'question': '您這份工作的公司約有多少位員工(包含受訪者本人)?', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': nan, 'RR2006': nan, 'RR2009': 'a08c/您這份工作的公司約有多少位員工(包含受訪者本人)?', 'RR2014': nan, 'RR2008': nan, 'RII2001': nan, 'RR2018': 'a08b/您這份工作的公司約有多少位員工(包含受訪者本人)?', 'RR2012': 'a08c/您這份工作的公司約有多少位員工(包含受訪者本人)'}
+Dropping 2 rows with question: a08c/您這份工作的公司約有多少位員工(包含受訪者本人)?
+Dropped 19 rows.
+Added 9 new rows.
+Processing column: RR2014
+Creating new row for question: {'question': '在去年之中，您的家庭是否曾經得到政府的教育補助?', 'RII2000': nan, 'RIII&RIV2002': 'D07A04/在去年之中，您的家庭是否曾經得到政府的教育補助?', 'RR2007': 'd06a03/在去年之中，您的家庭是否曾經得到政府的教育補助?', 'RR2006': 'C07A03/在去年之中，您的家庭是否曾經得到政府的教育補助?', 'RR2009': 'c06a03/在去年之中，您的家庭是否曾經得到政府的教育補助?', 'RR2014': 'c06a03/在去年之中，您的家庭是否曾經得到政府的教育補助(含五歲幼兒學費補助)?', 'RR2008': 'c06a03/在去年之中，您的家庭是否曾經得到政府的教育補助', 'RII2001': nan, 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: c06a03/在去年之中，您的家庭是否曾經得到政府的教育補助(含五歲幼兒學費補助)?
+Creating new row for question: {'question': '子女6性別', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': nan, 'RR2006': nan, 'RR2009': nan, 'RR2014': 'b14bc6/子女6性別', 'RR2008': 'b13bc6/子女6性別', 'RII2001': nan, 'RR2018': nan, 'RR2012': 'b13bc6/子女6性別'}
+Dropping 2 rows with question: b14bc6/子女6性別
+Creating new row for question: {'question': '子女4性別', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': nan, 'RR2006': nan, 'RR2009': nan, 'RR2014': 'b14bc4/子女4性別', 'RR2008': 'b13bc4/子女4性別', 'RII2001': nan, 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: b14bc4/子女4性別
+Creating new row for question: {'question': '子女2性別', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': nan, 'RR2006': nan, 'RR2009': nan, 'RR2014': 'b14bc2/子女2性別', 'RR2008': 'b13bc2/子女2性別', 'RII2001': nan, 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: b14bc2/子女2性別
+Creating new row for question: {'question': '子女6排行', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': nan, 'RR2006': nan, 'RR2009': nan, 'RR2014': 'b14ac6/子女6排行', 'RR2008': 'b13ac6/子女6排行', 'RII2001': nan, 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: b14ac6/子女6排行
+Creating new row for question: {'question': '子女5排行', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': nan, 'RR2006': nan, 'RR2009': nan, 'RR2014': 'b14ac5/子女5排行', 'RR2008': 'b13ac5/子女5排行', 'RII2001': nan, 'RR2018': nan, 'RR2012': 'b13ac5/子女5排行'}
+Dropping 2 rows with question: b14ac5/子女5排行
+Creating new row for question: {'question': '子女3排行', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': nan, 'RR2006': nan, 'RR2009': nan, 'RR2014': 'b14ac3/子女3排行', 'RR2008': 'b13ac3/子女3排行', 'RII2001': nan, 'RR2018': nan, 'RR2012': 'b13ac3/子女3排行'}
+Dropping 2 rows with question: b14ac3/子女3排行
+Creating new row for question: {'question': '您目前的這份工作最主要是以何種方式找到的?', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': nan, 'RR2006': nan, 'RR2009': 'a08a/您目前的這份工作最主要是以何種方式找到的?', 'RR2014': 'a11b/您目前的這份工作最主要是以何種方式找到的?', 'RR2008': 'a08a/您目前的這份工作最主要是以何種方式找到的?', 'RII2001': nan, 'RR2018': 'a12e/您目前的這份工作最主要是以何種方式找到的?', 'RR2012': nan}
+Dropping 2 rows with question: a11b/您目前的這份工作最主要是以何種方式找到的?
+Column 'RR2018' has multiple unique values for the same question: a08c04/您這份工作收入是按件計酬?
+Conflict detected, skipping this question.
+Creating new row for question: {'question': '您這份工作的工作地點是在那裡?地區碼', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': nan, 'RR2006': nan, 'RR2009': nan, 'RR2014': 'a07c02/您這份工作的工作地點地區碼是?', 'RR2008': nan, 'RII2001': nan, 'RR2018': nan, 'RR2012': 'a09b02/您這份工作的工作地點是在那裡?地區碼'}
+Dropping 2 rows with question: a07c02/您這份工作的工作地點地區碼是?
+Creating new row for question: {'question': '請問您是不是民國__年出生?', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': nan, 'RR2006': nan, 'RR2009': nan, 'RR2014': 'a02b01/請問您是民國__月出生的?', 'RR2008': 'a02a/請問您是不是民國__年出生?', 'RII2001': nan, 'RR2018': 'a02a/請問您是不是民國__年出生?', 'RR2012': 'a02a01/請問您是不是民國__年出生'}
+Dropping 2 rows with question: a02b01/請問您是民國__月出生的?
+Dropped 20 rows.
+Added 10 new rows.
+Processing column: RR2008
+Creating new row for question: {'question': '訪問結束時間__時', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': 'f06z03/訪問結束時間__時', 'RR2006': nan, 'RR2009': nan, 'RR2014': nan, 'RR2008': 'e05z03/訪問結束時間—時', 'RII2001': nan, 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: e05z03/訪問結束時間—時
+Creating new row for question: {'question': '訪問結束時間:月', 'RII2000': nan, 'RIII&RIV2002': 'I03Z01/訪問結束時間:月', 'RR2007': nan, 'RR2006': nan, 'RR2009': nan, 'RR2014': nan, 'RR2008': 'e05z01/訪問結束時間—月', 'RII2001': nan, 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: e05z01/訪問結束時間—月
+Creating new row for question: {'question': '請問您的體重是__公斤', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': nan, 'RR2006': nan, 'RR2009': 'e04/請問您的體重是__公斤', 'RR2014': nan, 'RR2008': 'd04/請問您的體重是__公斤', 'RII2001': nan, 'RR2018': 'h07b/請問您的體重是__公斤', 'RR2012': nan}
+Dropping 2 rows with question: d04/請問您的體重是__公斤
+Creating new row for question: {'question': '請問您(和您配偶)過去一年裡，支出家俱與家庭耐久設備__元', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': 'd09b/請問您(和您配偶)過去一年裡，支出家俱與家庭耐久設備__元', 'RR2006': 'C09B/請問您(和您配偶)過去一年裡，支出家俱與家庭耐久設備__元', 'RR2009': nan, 'RR2014': nan, 'RR2008': 'c09b/請問您(和您配偶)過去一年裡，下列各項支出情況:家俱與家庭耐久設備__元', 'RII2001': nan, 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: c09b/請問您(和您配偶)過去一年裡，下列各項支出情況:家俱與家庭耐久設備__元
+Creating new row for question: {'question': '在去年之中，請問您的父母是否曾經獲得下列收入來源?2 政府社會福利', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': nan, 'RR2006': nan, 'RR2009': nan, 'RR2014': 'b21c02/在去年之中，請問您的父母是否曾經獲得下列收入來源?2 政府社會福利', 'RR2008': 'b15c02/在去年之中，請問您的父母是否曾經獲得下列收入來源?政府社會福利補助', 'RII2001': nan, 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: b15c02/在去年之中，請問您的父母是否曾經獲得下列收入來源?政府社會福利補助
+Creating new row for question: {'question': '子女5去年見面次數?', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': nan, 'RR2006': nan, 'RR2009': nan, 'RR2014': 'b14qc5/子女5去年見面次數?', 'RR2008': 'b13ic5/子女5去年見面次數?', 'RII2001': nan, 'RR2018': 'b12sc5/健在子女5去年見面次數?', 'RR2012': nan}
+Dropping 2 rows with question: b13ic5/子女5去年見面次數?
+Creating new row for question: {'question': '子女4去年見面次數?', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': nan, 'RR2006': nan, 'RR2009': nan, 'RR2014': nan, 'RR2008': 'b13ic4/子女4去年見面次數?', 'RII2001': nan, 'RR2018': 'b12sc4/健在子女4去年見面次數?', 'RR2012': nan}
+Dropping 2 rows with question: b13ic4/子女4去年見面次數?
+Creating new row for question: {'question': '子女2排行', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': nan, 'RR2006': nan, 'RR2009': nan, 'RR2014': 'b14ac2/子女2排行', 'RR2008': 'b13ac2/子女2排行', 'RII2001': nan, 'RR2018': nan, 'RR2012': 'b13ac2/子女2排行'}
+Dropping 2 rows with question: b13ac2/子女2排行
+Creating new row for question: {'question': '房間數多少?__衛浴', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': nan, 'RR2006': nan, 'RR2009': nan, 'RR2014': 'b06e03/房間數多少?__衛浴', 'RR2008': 'b08d03/房間數多少?__衛浴', 'RII2001': nan, 'RR2018': 'b03e03/房間數多少?__衛浴', 'RR2012': 'b08e03/房間數多少 __衛浴'}
+Dropping 2 rows with question: b08d03/房間數多少?__衛浴
+Creating new row for question: {'question': '庭院__坪', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': nan, 'RR2006': nan, 'RR2009': nan, 'RR2014': nan, 'RR2008': 'b08c02/庭院__坪', 'RII2001': 'D07C02/庭院__坪', 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: b08c02/庭院__坪
+Creating new row for question: {'question': '請問97年1月之後您有沒有新的工作機會或工作變動的機會?', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': nan, 'RR2006': nan, 'RR2009': 'b05a/請問97年1月之後您有沒有新的工作機會或工作變動的機會?', 'RR2014': nan, 'RR2008': 'b05a/請問96年1月之後您有沒有新的工作機會或工作變動的機會?', 'RII2001': nan, 'RR2018': nan, 'RR2012': nan}
+Dropping 2 rows with question: b05a/請問96年1月之後您有沒有新的工作機會或工作變動的機會?
+Creating new row for question: {'question': '您這份工作收入是按件計酬?', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': 'a10a07/您這份工作收入是按件計酬?', 'RR2006': 'A13A05/您這份工作收入是按件計酬?', 'RR2009': 'a10c04/您這份工作收入是按件計酬?', 'RR2014': nan, 'RR2008': 'a10a07/您這份工作收入是否按件計酬', 'RII2001': nan, 'RR2018': 'a09b04/您這份工作收入是按件計酬的?', 'RR2012': nan}
+Dropping 2 rows with question: a10a07/您這份工作收入是否按件計酬
+Dropped 24 rows.
+Added 12 new rows.
+Processing column: RII2001
+Column 'RIII&RIV2002' has multiple unique values for the same question: C07A01/您這份工作是按小時，按月等方式定期領薪水
+Conflict detected, skipping this question.
+Processing column: RR2018
+Processing column: RR2012
+Creating new row for question: {'question': '房間數:__衛浴', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': nan, 'RR2006': nan, 'RR2009': nan, 'RR2014': nan, 'RR2008': nan, 'RII2001': 'D07D03/房間數:__衛浴', 'RR2018': nan, 'RR2012': 'b08e03/房間數多少 __衛浴'}
+Dropping 2 rows with question: b08e03/房間數多少 __衛浴
+Creating new row for question: {'question': '請問(他/她)是在哪一年出生的?民國__年', 'RII2000': nan, 'RIII&RIV2002': nan, 'RR2007': 'a17/請問(他/她)是在哪一年出生的?民國__年', 'RR2006': 'A23/請問(他/她)是在哪一年出生的?民國__年', 'RR2009': nan, 'RR2014': nan, 'RR2008': nan, 'RII2001': nan, 'RR2018': nan, 'RR2012': 'a17z01/請問(他/她)是在哪一年出生的'}
+Dropping 2 rows with question: a17z01/請問(他/她)是在哪一年出生的
+Column 'RR2006' has multiple unique values for the same question: a15a01/請問您過去這一個月之內有沒有在找工作或準備開始創業(不含兼差)
+Conflict detected, skipping this question.
+Dropped 4 rows.
+Added 2 new rows.
+After merging, compare_table has 405 rows and 12 columns (years).
+compare_table saved. Rows: 405, Columns (years): 11
+Press Enter to continue to the second stage...

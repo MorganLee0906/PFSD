@@ -2,9 +2,12 @@ import pandas as pd
 import os
 from sentence_transformers import SentenceTransformer, util
 from sklearn.neighbors import NearestNeighbors
+from scipy.spatial import distance
 import numpy as np
 import string
 import openai
+from merge_results import merge_results
+from fetching_pickle import drop_paired
 
 f = open("api_key.txt", "r")
 api_key = f.read()
@@ -12,43 +15,85 @@ openai.api_key = api_key
 f.close()
 model = "gpt-4o-mini-2024-07-18"
 
+sys_prompt = """
+You are an expert in survey question matching. Input is a seed group and its similar-group block, each line like "PSID: 問題文字 [TEXT]" or "[]". ONLY Identify items with “[]” across different years that are semantically identical. Output strictly in lines of format:
+YEAR-NUMBER=YEAR-NUMBER
+例如:
+RII2000-b14c=RII2001-C03A02
+如果一個 seed 子題對到多個年份，用 "=" 串接：
+RII2000-b14c=RII2001-C03A02=RR2002-d14c
+只輸出如上格式，多行即可，不要多餘文字。若無任何配對，不要輸出任何文字或符號。
+  
+# 範例輸入/範例輸出：
+## 範例 1（有一對）
+Input:
+Year: RII2000, Pset: b14, Label: {'工作'}
+b14a: 問題1 [Y]
+b14b: 問題2 []
+=== similar groups ===
+Found 1 similar groups:
+RII2001 B14 {'工作'} (similarity: 0.98)
+B14A: 問題1 [Y]
+B14B: 問題2 []
+Output:
+RII2000-b14b=RII2001-B14B
 
-df = pd.read_pickle("questions_with_emb.pkl")
-df = df.dropna(subset=["YEAR", "QUESTION", "LABEL"]).reset_index(drop=True)
+## 範例 2（多對）
+Input:
+Year: RII2000, Pset: x01, Label: {...}
+x01a: Q1 []
+x01b: Q2 []
+=== similar groups ===
+Found 2 similar groups:
+RII2001 X01 {...}
+X01A: Q1 []
+X01B: Q2 []
+RR2002 X02 {...}
+X02A: Q1 []
+X02B: Q2 []
+Output:
+RII2000-x01a=RII2001-X01A=RR2002-X02A
+RII2000-x01b=RII2001-X01B=RR2002-X02B
 
-df["dup_same_year"] = ""          # 新欄位，空字串表示尚未標記
-df["paired"] = ""                # 標記跨年已連結的題目，避免重複
-
-
-for year in df["YEAR"].unique():
-    print(f"Processing year: {year}")
-    idx_list = df.index[df["YEAR"] == year].tolist()
-    if len(idx_list) < 2:         # 只有 0 / 1 題就不用比
-        continue
-
-    # 取出該年份所有 embedding
-    emb_mat = np.stack(df.loc[idx_list, "embedding"].values)
-
-    # 建最近鄰模型（cosine 距離）
-    nbrs = NearestNeighbors(metric="cosine").fit(emb_mat)
-    dist_mat, ind_mat = nbrs.kneighbors(emb_mat, n_neighbors=len(idx_list))
-
-    # 逐題檢查：若與同年另一題相似度 > 0.95，雙方都標記為 "Y"
-    for row_pos, global_idx in enumerate(idx_list):
-        for nei_pos, d in zip(ind_mat[row_pos][1:], dist_mat[row_pos][1:]):  # [1:] 跳過自己
-            sim = 1 - d
-            if sim > 0.95:
-                #print(f"Found similar questions: {df.at[global_idx, 'QUESTION']} and {df.at[idx_list[nei_pos], 'QUESTION']} with similarity {sim:.4f}")
-                df.at[global_idx, "dup_same_year"] = "Y"
-                df.at[idx_list[nei_pos], "dup_same_year"] = "Y"
-
-# ────────────────────────────────────────────────────────────────
-# Step 2: cross‑year comparison for *non‑duplicate* questions
-# ────────────────────────────────────────────────────────────────
-print("\n=== Building cross‑year compare_table for non‑duplicate questions ===")
-
+## 範例 3（無配對）
+Input: …（only [Y] 或無相似）
+Output:
+"""
+ 
 def cluster_by_embedding(df):
-# 1) 只保留沒有被標記為同年重複的題目
+    df = df.dropna(subset=["YEAR", "QUESTION", "LABEL"]).reset_index(drop=True)
+    df["dup_same_year"] = ""
+    df["paired"] = ""
+
+    for year in df["YEAR"].unique():
+        print(f"Processing year: {year}")
+        idx_list = df.index[df["YEAR"] == year].tolist()
+        if len(idx_list) < 2:         # 只有 0 / 1 題就不用比
+            continue
+
+
+        # 取出該年份所有 embedding
+        emb_mat = np.stack(df.loc[idx_list, "embedding"].values)
+
+        # 建最近鄰模型（cosine 距離）
+        nbrs = NearestNeighbors(metric="cosine").fit(emb_mat)
+        dist_mat, ind_mat = nbrs.kneighbors(emb_mat, n_neighbors=len(idx_list))
+
+        # 逐題檢查：若與同年另一題相似度 > 0.95，雙方都標記為 "Y"
+        for row_pos, global_idx in enumerate(idx_list):
+            for nei_pos, d in zip(ind_mat[row_pos][1:], dist_mat[row_pos][1:]):  # [1:] 跳過自己
+                sim = 1 - d
+                if sim > 0.95:
+                    #print(f"Found similar questions: {df.at[global_idx, 'QUESTION']} and {df.at[idx_list[nei_pos], 'QUESTION']} with similarity {sim:.4f}")
+                    df.at[global_idx, "dup_same_year"] = "Y"
+                    df.at[idx_list[nei_pos], "dup_same_year"] = "Y"
+
+    # ────────────────────────────────────────────────────────────────
+    # Step 2: cross‑year comparison for *non‑duplicate* questions
+    # ────────────────────────────────────────────────────────────────
+    print("\n=== Building cross‑year compare_table for non‑duplicate questions ===")
+
+    # 1) 只保留沒有被標記為同年重複的題目
     clean_df = df[df["dup_same_year"] != "Y"].reset_index()      # 保留原 index 在 `index` 欄
 
     if clean_df.empty:
@@ -124,176 +169,167 @@ def cluster_by_embedding(df):
 
         rows.append(row_dict)
 
-    # ────────────────────────────────────────────────────────────────
-    # Step 3: merge rows that differ only by extra years
-    # ────────────────────────────────────────────────────────────────
     if rows:
-        merged = {}
-        for r in rows:
-            # canonical key: 去掉 leading NUMBER，只看題目文字
-            if "/" in r["question"]:
-                _, q_txt = r["question"].split("/", 1)
-            else:
-                q_txt = r["question"]
-
-            if q_txt not in merged:
-                merged[q_txt] = r
-            else:
-                # 把新的年份資料合併進去；已有的不覆寫
-                for yr, val in r.items():
-                    if yr == "question":
-                        continue
-                    if yr not in merged[q_txt]:
-                        merged[q_txt][yr] = val
-
-        rows = list(merged.values())
-    # 4) 輸出 compare_table.csv
-    if rows:
-        compare_table = pd.DataFrame(rows).set_index("question")
-        compare_table.to_csv("compare_table.csv", encoding="utf-8-sig")
+        compare_table = pd.DataFrame(rows).dropna(axis=1, how="all")  # 去掉全空的年份列
+        print(f"Before merging, compare_table has {len(compare_table)} rows and {compare_table.shape[1]} columns (years).")
+        compare_table = merge_results(compare_table)  # 合併結果
+        print(f"After merging, compare_table has {len(compare_table)} rows and {compare_table.shape[1]} columns (years).")
+        # 儲存結果
+        compare_table.to_csv("compare_table_embedding.csv", encoding="utf-8-sig", index=False)
         print(f"compare_table saved. Rows: {len(compare_table)}, Columns (years): {compare_table.shape[1]-1}")
     else:
         print("No cross‑year matches found with similarity > 0.95.")
     return df
 
-
-def gpt_link_subgroup(sub_df: pd.DataFrame) -> dict | None:
-    """
-    Given a dataframe of the same pset & sub_id across years (still unpaired),
-    ask GPT‑4o to link identical items.
-    Returns a dict mapping year -> 'NUMBER/QUESTION', ready for compare_table,
-    or None if GPT fails/parses poorly.
-    """
-    # Build prompt list: YearTag-NUMBER  QUESTION
-    lines = []
-    for _, r in sub_df.iterrows():
-        year_tag = str(r["YEAR"])
-        lines.append(f"{year_tag}-{r['NUMBER']}: {r['QUESTION']}")
-    prompt = (
-        "Below is a set of survey sub‑questions (same theme but different years).\n"
-        "Group the semantically identical ones across years.  "
-        "Respond with ONE line in the exact format:\n"
-        "YYYY-NUMBER=YYYY-NUMBER=...   (use the Year tag and NUMBER shown)\n"
-        "Include ALL input lines that are meaningfully the same; "
-        "if none match, reply with the single YYYY-NUMBER only.\n\n"
-        "Questions:\n" + "\n".join(lines) + "\n\nGrouping:"
-    )
-    try:
-        resp = openai.chat.completions.create(
-            model="gpt-4o",
-            messages=[{"role": "user", "content": prompt}],
-            max_tokens=120,
-            temperature=0.0,
-        )
-        grp_line = resp.choices[0].message.content.strip()
-        if "=" not in grp_line:
-            return None
-        mapping = {}
-        for token in grp_line.split("="):
-            token = token.strip()
-            if "-" not in token:
-                continue
-            y, num = token.split("-", 1)
-            row = sub_df[(sub_df["YEAR"].astype(str) == y) & (sub_df["NUMBER"] == num)]
-            if not row.empty:
-                q = row.iloc[0]
-                mapping[y] = (q.name, f"{q['NUMBER']}/{q['QUESTION']}")
-        if len(mapping) >= 2:
-            first_key = next(iter(mapping.values()))[1]   # pick question text
-            row_dict = {"question": first_key}
-            use_indices = []
-            for ytag, (idx, txt) in mapping.items():
-                row_dict[ytag] = txt
-                use_indices.append(idx)
-            return row_dict, use_indices
-    except Exception as e:
-        print("GPT linking error:", e)
-    return None
-
+"""
+df = pd.read_pickle("questions_with_emb.pkl")
 df = cluster_by_embedding(df)
-df[df["paired"] != "Y"].drop(columns = ["embedding"]).to_csv("unpaired.csv", encoding="utf-8-sig", index=False)
+df.to_pickle("first_stage.pkl")
+df.drop(columns = "embedding").to_csv("first_stage.csv", encoding="utf-8-sig", index=False)
+"""
 
+"""
+Second stage: Cross-year similarity matching by GPT-4o-mini
+"""
+
+print("Reading first stage data...")
+df = pd.read_pickle("second_stage.pkl")
+df = df.fillna('')
+print(df.shape)
+print(df)
 # Step 2b: 找出「pset 在同一年相似度高」的題組，
 #          再去其他年份尋找相似度 > 0.95 的 *pset 群*，僅列印結果
 # ────────────────────────────────────────────────────────────────
 print("\n=== Cross‑year similar pset groups ===")
 
- # -- 保險：若還沒生成 sub_id，立即補上 --
-if "sub_id" not in df.columns:
-    import re
-    def _split_number(n):
-        m = re.match(r"([A-Za-z]+\d+)([A-Za-z]*)$", str(n))
-        return m.group(2).lower() if m else ""
-    df["sub_id"] = df["NUMBER"].apply(_split_number)
+unpaired_idx = df.index[(df["paired"] != "Y") & (df["paired"] != "NOT FOUND") & (df["paired"] != "GPT")].tolist()
+visited_group = set()
+wait = input(f"Unpaired Problem Set: {len(unpaired_idx)}. Press Enter to continue...")
+# ---------- 準備每個 (YEAR, pset) 的索引清單與平均向量 ----------
+group_idx   = {}
+group_emb   = {}
 
- # ① 取出尚未 paired 的題目
-unpaired_df = df[df["paired"] != "Y"].copy()
+for (yr, ps), sub in df.groupby(["YEAR", "pset"]):
+    idx_list = sub.index.tolist()
+    emb_mean = np.mean(np.stack(sub["embedding"].values), axis=0)
+    group_idx[(yr, ps)] = idx_list
+    group_emb[(yr, ps)] = emb_mean
 
-if unpaired_df.empty:
-    print("\n=== All questions are already paired. ===")
-else:
-    print("\n=== Cross‑year similar groups (based on YEAR+pset) ===")
+for local_idx, row in df.loc[unpaired_idx].iterrows():
+    year = row["YEAR"]
+    pset = row["pset"]
+    if (year, pset) not in visited_group:
+        visited_group.add((year, pset))
+        print("Adding group for year", year, "pset", pset)
 
-    # ② 先把同一年、同 pset 的題目聚成一個 seed‑group
-    groups = []
-    for (yr, ps), sub in unpaired_df.groupby(["YEAR", "pset"]):
-        emb_mean = np.mean(np.stack(sub["embedding"].values), axis=0)
-        groups.append(
-            {
-                "YEAR": yr,
-                "pset": ps,
-                "indices": sub.index.tolist(),
-                "emb": emb_mean,
+visited_group = sorted(visited_group, key=lambda x: (x[0], x[1]))  # 按年份和 pset 排序
+rows = []
+
+asking_count = 0
+error_count = 0
+
+for year, pset in visited_group:
+    sub_df = df[(df["YEAR"] == year) & (df["pset"] == pset)]
+    prompt_lst = []
+    print(f"\nYear: {year}, Pset: {pset}, Label: {set(sub_df['LABEL'].to_list())}")
+    prompt_lst.append(f"Year: {year}, Pset: {pset}, Label: {set(sub_df['LABEL'].to_list())}")
+    for local_idx, row in sub_df.iterrows():
+        print(f"{row['NUMBER']}: {row['QUESTION']} [{row['paired']}]")
+        prompt_lst.append(f"{row['NUMBER']}: {row['QUESTION']} [{row['paired']}]")
+    emb = group_emb[(year, pset)]
+    found = False
+    sim_grp = set()
+    for (other_year, other_pset), other_emb in group_emb.items():
+        if other_year == year:
+            continue
+        sim = 1 - distance.cosine(emb, other_emb)
+        if sim > 0.9:
+            found = True
+            sim_grp.add((other_year, other_pset, sim))
+    if not found:
+        print("No similar groups found.")
+        sub_df = df[(df["YEAR"] == year) & (df["pset"] == pset)]
+        for local_idx, row in sub_df.iterrows():
+            row_dict = {
+                "question": row["QUESTION"]
             }
-        )
-    grp_df = pd.DataFrame(groups)
-    print(grp_df)
-    if len(grp_df) <= 1:
-        print("Not enough groups to compare.")
+            row_dict[year] = f"{row['NUMBER']}/{row['QUESTION']}"
+            rows.append(row_dict)
+            df.loc[(df["YEAR"] == row['YEAR']) & (df["NUMBER"] == row['NUMBER']), "paired"] = "NOT FOUND"        
+        continue
     else:
-        # ③ 對群組平均向量做最近鄰，比對跨年、相似度 > 0.95
-        emb_mat = np.stack(grp_df["emb"].values)
-        nn_grp = NearestNeighbors(metric="cosine").fit(emb_mat)
-        visited = set()
-
-        for i, g in grp_df.iterrows():
-            if i in visited:
+        visited_year = set()
+        sim_grp = sorted(sim_grp, key=lambda x: (x[0], -x[2]))
+        print("=== similar groups ===")
+        prompt_lst.append("=== similar groups ===")
+        print(f"Found {len(sim_grp)} similar groups:")
+        for other_year, other_pset, sim in sim_grp:
+            if other_year in visited_year:
                 continue
+            visited_year.add(other_year)
+            sub_df = df[(df["YEAR"] == other_year) & (df["pset"] == other_pset)]
+            print(f"{other_year} {other_pset} {set(sub_df['LABEL'].to_list())} (similarity: {sim:.4f})")
+            prompt_lst.append(f"{other_year} {other_pset} {set(sub_df['LABEL'].to_list())} (similarity: {sim:.4f})")
+            for local_idx, row in sub_df.iterrows():
+                print(f"{row['NUMBER']}: {row['QUESTION']} [{row['paired']}]")
+                prompt_lst.append(f"{row['NUMBER']}: {row['QUESTION']} [{row['paired']}]")
+        # Ask GPT-4o-mini to summarize the findings
+        prompt = "\n".join(prompt_lst)
+        print("\nAsking GPT-4o-mini to summarize the findings...")
+        count = 1
+        visited = set()
+        for _ in range(count):
+            try:
+                response = openai.chat.completions.create(
+                    model=model,
+                    messages=[
+                        {"role": "system", "content": sys_prompt},
+                        {"role": "user", "content": prompt}
+                    ],
+                    temperature=0.0,
+                    max_tokens=700
+                )
+                asking_count += 1
+                # Parse GPT response for mappings of form YEAR-NUMBER=YEAR-NUMBER
+                content = response.choices[0].message.content.strip()
+                print("GPT response:")
+                print(content)
+                content = content.split("\n")
+                content = [line.strip() for line in content if line.strip()]
+                for line in content:
+                    if "=" in line:
+                        year_num_pair = line.split("=")
+                        if len(year_num_pair) >= 2:
+                            row_dict = {}
+                            for i in range(len(year_num_pair)):
+                                year, num = year_num_pair[i].split("-")
+                                q_text = df[(df["YEAR"] == year) & (df["NUMBER"] == num)]["QUESTION"].values[0]
+                                visited.add((year, num))
+                                if i == 0:
+                                    print(f"Creating: {year}-{num} = {q_text}")
+                                    row_dict = {"question": q_text}
+                                row_dict[year] = f"{num}/{q_text}"
+                            rows.append(row_dict)
+                            # wait = input(f"Mapping found: {row_dict}")
+                                
+                        else:
+                            print(f"Invalid mapping format: {line}")
+                    else:
+                        print(f"Skipping non-mapping line: {line}")
+                break  
+            except Exception as e:
+                print(f"Error processing GPT response: {e}")
+                print("Response content:", content)
+                # wait = input("Press Enter to continue...")
+                error_count += 1
+        for (yr, num) in visited:
+            df.loc[(df["YEAR"] == yr) & (df["NUMBER"] == num), "paired"] = "GPT"
+compare_table_2 = pd.DataFrame(rows)
+compare_table = pd.read_csv("compare_table.csv", encoding="utf-8-sig")
+compare_table = pd.concat([compare_table, compare_table_2], axis=0, ignore_index=True)
+compare_table = merge_results(compare_table)
+compare_table.to_csv("compare_table.csv", encoding="utf-8-sig", index=False)
+df.to_pickle("second_stage.pkl")
+df.drop(columns=["embedding"]).to_csv("questions_with_emb_checked.csv", encoding="utf-8-sig", index=False)
 
-            dist, ind = nn_grp.kneighbors(
-                emb_mat[i : i + 1], n_neighbors=len(grp_df)
-            )
-            ind, dist = ind[0][1:], dist[0][1:]  # 去掉自己
-
-            match_ids = [i]
-            years_seen = {g["YEAR"]}
-
-            for j, d in zip(ind, dist):
-                if 1 - d < 0.95:
-                    break
-                if grp_df.at[j, "YEAR"] in years_seen:
-                    continue
-                match_ids.append(j)
-                years_seen.add(grp_df.at[j, "YEAR"])
-
-            if len(match_ids) == 1:
-                continue  # 單獨群組，跳過
-
-            # ④ 列印候選群組並由使用者確認是否標記 paired
-            print("\n[GROUP CANDIDATE]")
-            for gid in match_ids:
-                yr = grp_df.at[gid, "YEAR"]
-                ps = grp_df.at[gid, "pset"]
-                print(f"YEAR {yr} | pset {ps}")
-                # 列出該 YEAR+pset 的所有題目（不論 paired 狀態）
-                full_sub = df[(df["YEAR"] == yr) & (df["pset"] == ps)]
-                for _, q in full_sub.iterrows():
-                    print(f"   - {q['NUMBER']}/{q['QUESTION']}/{q['paired']}")
-            ans = input("Mark ALL questions in these groups as paired? (y/n) ")
-            if ans.lower().startswith("y"):
-                for gid in match_ids:
-                    visited.add(gid)
-                    for idx in grp_df.at[gid, "indices"]:
-                        df.at[idx, "paired"] = "Y"
-            else:
-                print("  -> skipped.")
+print(f"Total questions asked: {asking_count}, Errors encountered: {error_count}")
