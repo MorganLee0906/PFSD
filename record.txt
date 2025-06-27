@@ -1,0 +1,572 @@
+Processing index 0, year = RII2000, question = 問卷類別
+        YEAR QUESTION   LABEL  similarity
+     RII2000     問卷類別    問卷資訊         1.0
+      RR2006     問卷類別    問卷資訊         1.0
+RIII&RIV2002     問卷類別    問卷資訊         1.0
+      RR2018     問卷類別    問卷資訊         1.0
+      RR2009     問卷類別    問卷資訊         1.0
+      RR2008     問卷類別    問卷資訊         1.0
+      RR2014     問卷類別 受訪者基本資料         1.0
+     RII2001     問卷類別    問卷資訊         1.0
+Processing index 1, year = RII2000, question = 主樣本年齡層
+        YEAR QUESTION   LABEL  similarity
+      RR2008   主樣本年齡層    問卷資訊         1.0
+     RII2000   主樣本年齡層    問卷資訊         1.0
+      RR2009   主樣本年齡層    問卷資訊         1.0
+RIII&RIV2002   主樣本年齡層    問卷資訊         1.0
+      RR2018   主樣本年齡層    問卷資訊         1.0
+     RII2001   主樣本年齡層    問卷資訊         1.0
+      RR2007   主樣本年齡層    問卷資訊         1.0
+      RR2014   主樣本年齡層 受訪者基本資料         1.0
+Processing index 2, year = RII2000, question = 訪問時段
+        YEAR QUESTION   LABEL  similarity
+RIII&RIV2002     訪問時段    問卷資訊         1.0
+      RR2006     訪問時段    問卷資訊         1.0
+      RR2007     訪問時段    問卷資訊         1.0
+      RR2014     訪問時段 受訪者基本資料         1.0
+      RR2009     訪問時段    問卷資訊         1.0
+      RR2008     訪問時段    問卷資訊         1.0
+     RII2000     訪問時段    問卷資訊         1.0
+     RII2001     訪問時段    問卷資訊         1.0
+Processing index 3, year = RII2000, question = 月(訪問開始時間)
+   YEAR  QUESTION LABEL  similarity
+RII2000 月(訪問開始時間)  問卷資訊         1.0
+A01 created.
+Processing index 4, year = RII2000, question = 日(訪問開始時間)
+   YEAR  QUESTION LABEL  similarity
+RII2000 日(訪問開始時間)  問卷資訊         1.0
+A02 created.
+Processing index 5, year = RII2000, question = 時(訪問開始時間)
+   YEAR  QUESTION LABEL  similarity
+RII2001 時(訪問開始時間)  問卷資訊         1.0
+A03 created.
+Processing index 6, year = RII2000, question = 分(訪問開始時間)
+   YEAR  QUESTION LABEL  similarity
+RII2001 分(訪問開始時間)  問卷資訊         1.0
+A04 created.
+Processing index 7, year = RII2000, question = 現住地區域碼
+   YEAR QUESTION LABEL  similarity
+RII2001   現居地區域碼  問卷資訊    0.980055
+A05 created.
+Processing index 8, year = RII2000, question = 受訪者與戶長的關係
+   YEAR  QUESTION   LABEL  similarity
+RII2000 受訪者與戶長的關係 受訪者基本資料    1.000000
+ RR2006 受訪者與戶長之關係 受訪者基本資料    0.986179
+RII2001 受訪者與戶長之關係    問卷資訊    0.986179
+Processing index 9, year = RII2000, question = 性別
+   YEAR QUESTION   LABEL  similarity
+RII2000       性別 受訪者基本資料         1.0
+B01 created.
+Processing index 10, year = RII2000, question = 請問您最高的教育程度是什麼?
+   YEAR       QUESTION   LABEL  similarity
+ RR2014 請問您最高的教育程度是什麼? 受訪者基本資料    1.000000
+ RR2018 請問您最高的教育程度是什麼? 受訪者基本資料    1.000000
+RII2001 請問您最高的教育程度是什麼? 受訪者基本資料    1.000000
+ RR2009 請問您最高的教育程度是什麼? 受訪者基本資料    1.000000
+ RR2012  請問您最高的教育程度是什麼 受訪者基本資料    0.979906
+B02 created.
+Processing index 11, year = RII2000, question = 請問您認為自己目前的健康狀況如何?
+        YEAR          QUESTION LABEL  similarity
+     RII2000 請問您認為自己目前的健康狀況如何?  健康狀況    1.000000
+      RR2006 請問您認為自己目前的健康狀況如何?  健康狀況    1.000000
+      RR2014 請問您認為自己目前的健康狀況如何?  健康狀況    1.000000
+      RR2018 請問您認為自己目前的健康狀況如何?  健康狀況    1.000000
+     RII2001 請問您認為自己目前的健康狀況如何?  健康狀況    1.000000
+      RR2008 請問您認為自己目前的健康狀況如何?  健康狀況    1.000000
+RIII&RIV2002 請問您認為自己目前的健康狀況如何?  健康狀況    1.000000
+      RR2009 請問您認為自己目前的健康狀況如何?  健康狀況    1.000000
+      RR2012  請問您認為自己目前的健康狀況如何  健康狀況    0.978012
+D01 created.
+Processing index 12, year = RII2000, question = 請問您目前結婚了嗎?(若有兩次以上之婚姻經驗，以最近一次為準)
+  YEAR   QUESTION LABEL  similarity
+RR2006 請問你目前結婚了嗎?  婚姻狀況    0.976842
+RR2007 請問您目前結婚了嗎?  婚姻狀況    0.976186
+RR2008 請問您目前結婚了嗎?  婚姻狀況    0.976186
+RR2018 請問您目前結婚了嗎?  婚姻狀況    0.976186
+RR2009 請問您目前結婚了嗎?  婚姻狀況    0.976186
+E01 created.
+Processing index 13, year = RII2000, question = 是在哪一年開始?民國__年
+Empty DataFrame
+Columns: [YEAR, QUESTION, LABEL, similarity]
+Index: []
+  (無相似度 > 0.95 的題目)
+Processing index 14, year = RII2000, question = 請問您的(先生/太太)是在哪一年出生的? 民國__年
+        YEAR                       QUESTION   LABEL  similarity
+RIII&RIV2002      請問您的(先生/太太)是在哪一年出生的?民國__年 配偶：基本資料    0.998529
+      RR2014      請問您的(先生/太太)是在哪一年出生的?民國__年 配偶：基本資料    0.998529
+     RII2001      請問您的(先生/太太)是在哪一年出生的?民國__年 配偶：基本資料    0.998529
+      RR2018 請問您的(先生/太太/同居伴侶)是在哪一年出生的?民國__年 配偶：基本資料    0.970112
+F01 created.
+Processing index 15, year = RII2000, question = 請問(他/她)是那裡人?
+Empty DataFrame
+Columns: [YEAR, QUESTION, LABEL, similarity]
+Index: []
+  (無相似度 > 0.95 的題目)
+Processing index 16, year = RII2000, question = 請問您(先生/太太)的最高教育程度是什麼?
+        YEAR              QUESTION LABEL  similarity
+RIII&RIV2002 請問您(先生/太太)的最高教育程度是什麼? 配偶：教育    1.000000
+     RII2001  請問您(先生/太太)最高教育程度是什麼? 配偶：教育    0.991925
+G01 created.
+Processing index 17, year = RII2000, question = 請問您(先生/太太)目前的健康狀況如何？
+   YEAR             QUESTION   LABEL  similarity
+RII2001 請問您(先生/太太)目前的健康狀況如何? 配偶：健康狀況         1.0
+RII2000 請問您(先生/太太)目前的健康狀況如何？ 配偶：健康狀況         1.0
+H01 created.
+Processing index 18, year = RII2000, question = 請問您什麼時候開始上小學?民國   年
+Empty DataFrame
+Columns: [YEAR, QUESTION, LABEL, similarity]
+Index: []
+  (無相似度 > 0.95 的題目)
+Processing index 19, year = RII2000, question = 請問您上小學以前，在家裡主要都是說哪一種語言?
+   YEAR                QUESTION LABEL  similarity
+RII2000 請問您上小學以前，在家裡主要都是說哪一種語言? 教育：國小         1.0
+I01 created.
+Processing index 20, year = RII2000, question = 那個時候，您的國語能力如何？如果0分代表完全不懂，10分代表很流利，您?{為上小學以前您的國語大約是幾分?__分
+Empty DataFrame
+Columns: [YEAR, QUESTION, LABEL, similarity]
+Index: []
+  (無相似度 > 0.95 的題目)
+Processing index 21, year = RII2000, question = 請問您唸完小學以後，接著做什麼呢?
+   YEAR          QUESTION LABEL  similarity
+RII2001 請問您唸完小學以後，接著做什麼呢? 教育：國小         1.0
+I02 created.
+Processing index 22, year = RII2000, question = 請問您什麼時候開始上初中/初職/國中?民國__年
+   YEAR                 QUESTION LABEL  similarity
+RII2000 請問您什麼時候開始上初中/初職/國中?民國__年 教育：國中    1.000000
+RII2001 請問您什麼時候開始上高中/高職/五專?民國__年 教育：高中    0.962241
+Processing index 23, year = RII2000, question = 請問在這個階段，您主要是唸什麼樣的學校?
+   YEAR             QUESTION LABEL  similarity
+RII2000 請問在這個階段，您主要是唸什麼樣的學校? 教育：國中         1.0
+RII2001 請問在這個階段，您主要是唸什麼樣的學校? 教育：國中         1.0
+J01 created.
+Processing index 24, year = RII2000, question = 請問您就讀的這間學校是公立還是私立?
+   YEAR           QUESTION LABEL  similarity
+RII2001 請問您就讀的這間學校是公立還是私立? 教育：國中         1.0
+J02 created.
+Processing index 25, year = RII2000, question = 請問在這個階段，您有沒有拿到正式的文憑?
+   YEAR             QUESTION LABEL  similarity
+RII2000 請問在這個階段，您有沒有拿到正式的文憑? 教育：國中         1.0
+RII2001 請問在這個階段，您有沒有拿到正式的文憑? 教育：國中         1.0
+J03 created.
+Processing index 26, year = RII2000, question = 請問您是什麼時候畢業或肄業?民國_ 年
+   YEAR             QUESTION LABEL  similarity
+RII2001 請問您是什麼時候畢業或肄業的?民國__年 教育：國中    0.956424
+J04 created.
+Processing index 27, year = RII2000, question = 請問您在這個教育階段後，緊接下來做什麼呢?
+   YEAR              QUESTION LABEL  similarity
+RII2001 請問您在這個教育階段後，緊接下來做什麼呢? 教育：國中         1.0
+RII2000 請問您在這個教育階段後，緊接下來做什麼呢? 教育：國中         1.0
+J05 created.
+Processing index 28, year = RII2000, question = 請問您什麼時候開始上高中/高職/五專?民國__年
+   YEAR                 QUESTION LABEL  similarity
+RII2001 請問您什麼時候開始上高中/高職/五專?民國__年 教育：高中    1.000000
+RII2000 請問您什麼時候開始上初中/初職/國中?民國__年 教育：國中    0.962241
+Processing index 29, year = RII2000, question = 請問在這個階段，您主要是唸什麼樣的學校?
+   YEAR             QUESTION LABEL  similarity
+RII2000 請問在這個階段，您主要是唸什麼樣的學校? 教育：高中         1.0
+K01 created.
+Processing index 30, year = RII2000, question = 請問您就讀的學校是公立還是私立?
+   YEAR         QUESTION LABEL  similarity
+RII2000 請問您就讀的學校是公立還是私立? 教育：高中         1.0
+RII2001 請問您就讀的學校是公立還是私立? 教育：高中         1.0
+K02 created.
+Processing index 31, year = RII2000, question = 請問在這個階段，您有沒有拿到正式的文憑?
+   YEAR             QUESTION LABEL  similarity
+RII2000 請問在這個階段，您有沒有拿到正式的文憑? 教育：高中         1.0
+RII2001 請問在這個階段，您有沒有拿到正式的文憑? 教育：高中         1.0
+K03 created.
+Processing index 32, year = RII2000, question = 請問您是什麼時候畢業或肄業的?民國  _年
+   YEAR             QUESTION LABEL  similarity
+RII2001 請問您是什麼時候畢業或肄業的?民國__年 教育：高中    0.974649
+K04 created.
+Processing index 33, year = RII2000, question = 請問您在這個教育階段後，緊接下來做什麼呢?
+   YEAR              QUESTION LABEL  similarity
+RII2001 請問您在這個教育階段後，緊接下來做什麼呢? 教育：國中         1.0
+RII2000 請問您在這個教育階段後，緊接下來做什麼呢? 教育：高中         1.0
+Processing index 34, year = RII2000, question = 請問您什麼時候開始上二專/三專/技術學院/大學?民國  _年
+   YEAR                      QUESTION LABEL  similarity
+RII2001 請問您什麼時候開始上二專/三專/技術學院/大學?民國__年 教育：大專    0.982412
+L01 created.
+Processing index 35, year = RII2000, question = 請問在這個階段，您主要是唸什麼樣的學校?
+   YEAR             QUESTION LABEL  similarity
+RII2000 請問在這個階段，您主要是唸什麼樣的學校? 教育：大專         1.0
+RII2001 請問在這個階段，您主要是唸什麼樣的學校? 教育：大專         1.0
+L02 created.
+Processing index 36, year = RII2000, question = 請問您就讀的學校是公立還是私立?
+   YEAR         QUESTION LABEL  similarity
+RII2000 請問您就讀的學校是公立還是私立? 教育：大專         1.0
+RII2001 請問您就讀的學校是公立還是私立? 教育：高中         1.0
+Processing index 37, year = RII2000, question = 請問在這個階段，您有沒有拿到正式的文憑?
+   YEAR             QUESTION LABEL  similarity
+RII2000 請問在這個階段，您有沒有拿到正式的文憑? 教育：大專         1.0
+L03 created.
+Processing index 38, year = RII2000, question = 請問您是什麼時候畢業或肄業的?民國  _年
+   YEAR              QUESTION LABEL  similarity
+RII2000 請問您是什麼時候畢業或肄業的?民國  _年 教育：大專    1.000000
+RII2001  請問您是什麼時候畢業或肄業的?民國__年 教育：大專    0.974649
+L04 created.
+Processing index 39, year = RII2000, question = 請問您什麼時候開始上研究所(碩士/博士)?民國  _年
+   YEAR                   QUESTION  LABEL  similarity
+RII2001 請問您什麼時候開始上研究所(碩士/博士)?民國__年 教育：研究所    0.988962
+M01 created.
+Processing index 40, year = RII2000, question = 請問在研究所階段，您有沒有拿到正式的文憑?
+   YEAR              QUESTION  LABEL  similarity
+RII2001 請問在研究所階段，您有沒有拿到正式的文憑? 教育：研究所         1.0
+M02 created.
+Processing index 41, year = RII2000, question = 請問您是什麼時候畢業或肄業的?民國 _ 年
+   YEAR             QUESTION  LABEL  similarity
+RII2001 請問您是什麼時候畢業或肄業的?民國__年 教育：研究所    0.974583
+M03 created.
+Processing index 42, year = RII2000, question = 請問您有沒有在軍中服役過?
+   YEAR      QUESTION LABEL  similarity
+RII2001 請問您有沒有在軍中服役過?    兵役         1.0
+N01 created.
+Processing index 43, year = RII2000, question = 請問您什麼時候在軍中服役?民國 _ 年入伍
+Empty DataFrame
+Columns: [YEAR, QUESTION, LABEL, similarity]
+Index: []
+  (無相似度 > 0.95 的題目)
+Processing index 44, year = RII2000, question = 民國  _年退伍
+   YEAR QUESTION LABEL  similarity
+RII2001  民國__年退伍    兵役    0.986576
+N02 created.
+Processing index 45, year = RII2000, question = 請問您什麼時候開始第一次正式就業?民國_  年
+   YEAR               QUESTION LABEL  similarity
+RII2001 請問您什麼時候開始第一次正式就業?民國__年    工作    0.980629
+O01 created.
+Processing index 46, year = RII2000, question = 請問您什麼時候結婚(指第一次婚姻)?民國 _ 年
+   YEAR                QUESTION LABEL  similarity
+RII2001 請問您什麼時候結婚(指第一次婚姻)?民國__年  婚姻狀況     0.98144
+E02 created.
+Processing index 47, year = RII2000, question = 請問您什麼時候有第一個小孩? 民國 _ 年
+   YEAR            QUESTION LABEL  similarity
+RII2001 請問您什麼時候有第一個小孩?民國__年    子女     0.98976
+P01 created.
+Processing index 48, year = RII2000, question = 請問您什麼時候第一次買自己的房子? 民國  _年
+   YEAR               QUESTION   LABEL  similarity
+RII2001 請問您什麼時候第一次買自己的房子?民國__年 家庭決策及收支    0.992089
+Q01 created.
+Processing index 49, year = RII2000, question = 請問當時您買房子的錢主要來自何處?
+   YEAR          QUESTION   LABEL  similarity
+RII2000 請問當時您買房子的錢主要來自何處? 家庭決策及收支         1.0
+Q02 created.
+Processing index 51, year = RII2000, question = 請問到目前為止，您有沒有參加過任何職業訓練課程?
+   YEAR                 QUESTION LABEL  similarity
+RII2000 請問到目前為止，您有沒有參加過任何職業訓練課程? 教育：高中         1.0
+K05 created.
+Processing index 52, year = RII2000, question = 請問您有沒有高(普)考合格證書?
+   YEAR            QUESTION    LABEL  similarity
+RII2001 請問您有沒有高(普)考或特考合格証書? 工作：訓練及證照    0.950679
+K06 created.
+Processing index 53, year = RII2000, question = 請問您有沒有經由考試或通過正式檢定，而取得任何職業或技術執照?
+   YEAR                        QUESTION    LABEL  similarity
+RII2001 請問您有沒有經由考試或通過正式檢定，而取得任何職業或技術執照? 工作：訓練及證照         1.0
+K07 created.
+Processing index 54, year = RII2000, question = 請問您曾經自己創業(當老闆)過嗎?
+   YEAR          QUESTION LABEL  similarity
+RII2000 請問您曾經自己創業(當老闆)過嗎?    工作         1.0
+O02 created.
+Processing index 55, year = RII2000, question = 如果有，那是什麼時候的事(指第一次創業)?民國__年
+   YEAR                   QUESTION LABEL  similarity
+RII2000 如果有，那是什麼時候的事(指第一次創業)?民國__年    工作         1.0
+O03 created.
+Processing index 56, year = RII2000, question = 當時是做那一種事業
+Empty DataFrame
+Columns: [YEAR, QUESTION, LABEL, similarity]
+Index: []
+  (無相似度 > 0.95 的題目)
+Processing index 57, year = RII2000, question = 當時的創業資金主要來自何處?
+   YEAR       QUESTION LABEL  similarity
+RII2000 當時的創業資金主要來自何處?    工作         1.0
+O04 created.
+Processing index 58, year = RII2000, question = 當時一共有幾名員工?__名
+   YEAR      QUESTION LABEL  similarity
+RII2001 當時一共有幾名員工?__名    工作         1.0
+O05 created.
+Processing index 59, year = RII2000, question = 這個事業目前還在進行嗎?
+   YEAR     QUESTION LABEL  similarity
+RII2000 這個事業目前還在進行嗎?    工作         1.0
+O06 created.
+Processing index 60, year = RII2000, question = 目前一共有幾名員工__名
+Empty DataFrame
+Columns: [YEAR, QUESTION, LABEL, similarity]
+Index: []
+  (無相似度 > 0.95 的題目)
+Processing index 61, year = RII2000, question = 如果該事業已經結束的話，請問那是什麼時候的事?民國_ 年
+   YEAR                     QUESTION LABEL  similarity
+RII2001 如果該事業已經結束的話，請問那是什麼時候的事?民國__年    工作    0.984813
+O07 created.
+Processing index 62, year = RII2000, question = 請問您目前有沒有工作?
+  YEAR   QUESTION LABEL  similarity
+RR2007 請問您目前有工作嗎?    工作    0.993346
+RR2009 請問您目前有工作嗎?    工作    0.993346
+RR2018 請問您目前有工作嗎?    工作    0.993346
+RR2008 請問您目前有工作嗎?    工作    0.993346
+RR2014 請問您目前有工作嗎?    工作    0.993346
+RR2006 請問您目前有工作嗎?    工作    0.993346
+RR2012  請問您目前有工作嗎    工作    0.986327
+O08 created.
+Processing index 63, year = RII2000, question = 請問您目前沒有工作的原因是什麼?
+   YEAR         QUESTION LABEL  similarity
+ RR2007 請問您目前沒有工作的原因是什麼?    工作    1.000000
+ RR2009 請問您目前沒有工作的原因是什麼?    工作    1.000000
+RII2001 請問您目前沒有工作的原因是什麼?    工作    1.000000
+ RR2006 請問您目前沒有工作的原因是什麼?    工作    1.000000
+RII2000 請問您目前沒有工作的原因是什麼?    工作    1.000000
+ RR2008  請問您目前沒有工作的原因是什麼    工作    0.977433
+O09 created.
+Processing index 64, year = RII2000, question = 您這份工作的行業
+        YEAR   QUESTION LABEL  similarity
+     RII2000   您這份工作的行業    工作    1.000000
+RIII&RIV2002   您這份工作的職業    工作    0.985748
+     RII2001 您目前這份工作的行業    工作    0.965545
+O10 created.
+Processing index 65, year = RII2000, question = 您這份工作的職業
+        YEAR   QUESTION LABEL  similarity
+RIII&RIV2002   您這份工作的職業    工作    1.000000
+     RII2000   您這份工作的行業    工作    0.985748
+     RII2001 您目前這份工作的職業    工作    0.964967
+O11 created.
+Processing index 66, year = RII2000, question = 您是在為誰工作?
+        YEAR   QUESTION LABEL  similarity
+RIII&RIV2002 請問您是在為誰工作?    工作    0.983752
+      RR2008 請問您是在為誰工作?    工作    0.983752
+      RR2014 請問您是在為誰工作?    工作    0.983752
+      RR2018 請問您是在為誰工作?    工作    0.983752
+      RR2007 請問您是在為誰工作?    工作    0.983752
+     RII2001 請問您是在為誰工作?    工作    0.983752
+      RR2006 請問您是在為誰工作?    工作    0.983752
+      RR2009 請問您是在為誰工作?    工作    0.983752
+      RR2012  請問您是在為誰工作    工作    0.951826
+O12 created.
+Processing index 67, year = RII2000, question = 您這份工作的公司約有多少位員工?
+        YEAR         QUESTION LABEL  similarity
+      RR2008 您這份工作的公司約有多少位員工?    工作         1.0
+     RII2001 您這份工作的公司約有多少位員工?    工作         1.0
+RIII&RIV2002 您這份工作的公司約有多少位員工?    工作         1.0
+      RR2006 您這份工作的公司約有多少位員工?    工作         1.0
+     RII2000 您這份工作的公司約有多少位員工?    工作         1.0
+O13 created.
+Processing index 68, year = RII2000, question = 您這份工作的地點是在哪裡?
+  YEAR        QUESTION LABEL  similarity
+RR2006 您這份工作的工作地點是在哪裡?    工作    0.986457
+O14 created.
+Processing index 69, year = RII2000, question = 工作地點之地區碼
+  YEAR QUESTION LABEL  similarity
+RR2006  工作地點地區碼    工作    0.988343
+RR2008  工作地點地區碼    工作    0.988343
+O15 created.
+Processing index 70, year = RII2000, question = 按小時，按月等方式定期領薪水
+        YEAR                QUESTION LABEL  similarity
+RIII&RIV2002 按小時，按月等方式定期領薪水，每月平均約__元    工作    0.959637
+     RII2001    您這份工作是按小時，按月等方式定期領薪水    工作    0.957141
+O16 created.
+Processing index 71, year = RII2000, question = 每月平均約__元
+        YEAR      QUESTION LABEL  similarity
+     RII2000      每月平均約__元    工作     1.00000
+     RII2001      每月平均約__元    工作     1.00000
+RIII&RIV2002 其他來源，每月平均約__元    工作     0.95395
+O17 created.
+Processing index 72, year = RII2000, question = 業績獎金，分紅等不固定的收入
+Empty DataFrame
+Columns: [YEAR, QUESTION, LABEL, similarity]
+Index: []
+  (無相似度 > 0.95 的題目)
+Processing index 73, year = RII2000, question = 每月平均約__元
+        YEAR      QUESTION LABEL  similarity
+     RII2000      每月平均約__元    工作     1.00000
+     RII2001      每月平均約__元    工作     1.00000
+RIII&RIV2002 其他來源，每月平均約__元    工作     0.95395
+O18 created.
+Processing index 74, year = RII2000, question = 其他來源
+Empty DataFrame
+Columns: [YEAR, QUESTION, LABEL, similarity]
+Index: []
+  (無相似度 > 0.95 的題目)
+Processing index 75, year = RII2000, question = 每月平均約__元
+        YEAR      QUESTION LABEL  similarity
+     RII2000      每月平均約__元    工作     1.00000
+     RII2001      每月平均約__元    工作     1.00000
+RIII&RIV2002 其他來源，每月平均約__元    工作     0.95395
+O19 created.
+Processing index 76, year = RII2000, question = 您這份工作平均每個月的總收入大約有多少?__元
+   YEAR                QUESTION LABEL  similarity
+RII2001 您這份工作平均每個月的總收入大約有多少?__元    工作    1.000000
+RII2000 您這份工作平均每個月的總收入大約有多少?__元    工作    1.000000
+ RR2006 您這份工作平均每個月的總收入大約有多少?__元    工作    1.000000
+ RR2012   您這份工作平均每個月的總收入有多少?__元    工作    0.996433
+ RR2007    您這份工作平均每個月的總收入大約有多少?    工作    0.995147
+ RR2014    您這份工作平均每個月的總收入大約有多少? 配偶：工作    0.995147
+ RR2009    您這份工作平均每個月的總收入大約有多少?    工作    0.995147
+ RR2018    您這份工作平均每個月的總收入大約有多少?    工作    0.995147
+ RR2008    您這份工作平均每個月的總收入大約有多少?    工作    0.995147
+Processing index 77, year = RII2000, question = 在正常的情形下，您這份工作平均每週大約工作幾個小時?__小時
+        YEAR                              QUESTION LABEL  similarity
+RIII&RIV2002        在正常的情形下，您這份工作平均每週大約工作幾個小時?__小時    工作    1.000000
+     RII2000        在正常的情形下，您這份工作平均每週大約工作幾個小時?__小時    工作    1.000000
+      RR2006            在正常的情形下，您這份工作平均每週大約工作幾個小時?    工作    0.994343
+      RR2009            在正常的情形下，您這份工作平均每週大約工作幾個小時?    工作    0.994343
+      RR2007            在正常的情形下，您這份工作平均每週大約工作幾個小時?    工作    0.994343
+      RR2014            在正常的情形下，您這份工作平均每週大約工作幾個小時? 配偶：工作    0.994343
+      RR2008            在正常的情形下，您這份工作平均每週大約工作幾個小時?    工作    0.994343
+      RR2018            在正常的情形下，您這份工作平均每週大約工作幾個小時?    工作    0.994343
+     RII2001 在正常的情形下，您(先生/太太)這份工作平均每週大約工作幾個小時?__小時 配偶：工作    0.980570
+Processing index 78, year = RII2000, question = 您這份工作大約做了多久?
+   YEAR         QUESTION LABEL  similarity
+RII2001     您這份工作大約做了多久?    工作    1.000000
+ RR2008 請問您這份工作做了多久了?__月    工作    0.965816
+ RR2009 請問您這份工作做了多久了?__年    工作    0.964299
+ RR2007 請問您這份工作做了多久了?__年    工作    0.964299
+O20 created.
+Processing index 79, year = RII2000, question = 約做了__年
+Empty DataFrame
+Columns: [YEAR, QUESTION, LABEL, similarity]
+Index: []
+  (無相似度 > 0.95 的題目)
+Processing index 80, year = RII2000, question = __個月
+Empty DataFrame
+Columns: [YEAR, QUESTION, LABEL, similarity]
+Index: []
+  (無相似度 > 0.95 的題目)
+Processing index 81, year = RII2000, question = 您覺得目前的工作在未來的一年之內穩定嗎?
+   YEAR              QUESTION LABEL  similarity
+RII2001 您覺得您目前的工作在未來的一年之內穩定嗎?    工作    0.976633
+O21 created.
+Processing index 82, year = RII2000, question = 平常您每天上下班總共需要多少交通時間?約__分鐘
+        YEAR                         QUESTION LABEL  similarity
+     RII2000         平常您每天上下班總共需要多少交通時間?約__分鐘    工作    1.000000
+     RII2001         平常您每天上下班總共需要多少交通時間?約__分鐘    工作    1.000000
+      RR2008              平常您每天上下班總共需要多少交通時間?    工作    0.986648
+      RR2018              平常您每天上下班總共需要多少交通時間?    工作    0.986648
+      RR2006              平常您每天上下班總共需要多少交通時間?    工作    0.986648
+      RR2009              平常您每天上下班總共需要多少交通時間?    工作    0.986648
+      RR2007              平常您每天上下班總共需要多少交通時間?    工作    0.986648
+      RR2014 平常您每天上下班總共需要多少交通時間?(以最常用的交通工具為主) 配偶：工作    0.983770
+RIII&RIV2002  平常您(先生/太太)每天上下班總共需要多少交通時間?約__分鐘 配偶：工作    0.980540
+Processing index 83, year = RII2000, question = 您在做這份工作時，是否會用到電腦?
+   YEAR          QUESTION LABEL  similarity
+RII2000 您在做這份工作時，是否會用到電腦?    工作         1.0
+O22 created.
+Processing index 84, year = RII2000, question = 您現在工作機構有沒有提供除健保外之醫療、意外或人壽保險福利給像您?o個職位的員工?
+Empty DataFrame
+Columns: [YEAR, QUESTION, LABEL, similarity]
+Index: []
+  (無相似度 > 0.95 的題目)
+Processing index 85, year = RII2000, question = 您現在工作機構有沒有提供低利貸款或優惠存款福利給像您這個職位的員?u?
+Empty DataFrame
+Columns: [YEAR, QUESTION, LABEL, similarity]
+Index: []
+  (無相似度 > 0.95 的題目)
+Processing index 86, year = RII2000, question = 您現在工作機構有沒有提供宿舍或房屋津貼福利給像您這個職位的員工?
+Empty DataFrame
+Columns: [YEAR, QUESTION, LABEL, similarity]
+Index: []
+  (無相似度 > 0.95 的題目)
+Processing index 87, year = RII2000, question = 您現在工作機構有沒有提供退休金福利給像您這個職位的員工?
+Empty DataFrame
+Columns: [YEAR, QUESTION, LABEL, similarity]
+Index: []
+  (無相似度 > 0.95 的題目)
+Processing index 88, year = RII2000, question = 您現在工作機構有沒有提供小孩的學雜費補助福利給像您這個職位的員工?
+Empty DataFrame
+Columns: [YEAR, QUESTION, LABEL, similarity]
+Index: []
+  (無相似度 > 0.95 的題目)
+Processing index 89, year = RII2000, question = 您現在工作機構有沒有提供提供在職訓練課程或進修福利給像您這個職位?滬工?
+Empty DataFrame
+Columns: [YEAR, QUESTION, LABEL, similarity]
+Index: []
+  (無相似度 > 0.95 的題目)
+Processing index 90, year = RII2000, question = 與同樣職位的男性員工比較起來，女性員工的薪水較少
+Empty DataFrame
+Columns: [YEAR, QUESTION, LABEL, similarity]
+Index: []
+  (無相似度 > 0.95 的題目)
+Processing index 91, year = RII2000, question = 女性員工在昇遷時較為困難
+Empty DataFrame
+Columns: [YEAR, QUESTION, LABEL, similarity]
+Index: []
+  (無相似度 > 0.95 的題目)
+Processing index 92, year = RII2000, question = 女性員工可能因為懷孕或結婚而被解僱，調職或影響升遷
+Empty DataFrame
+Columns: [YEAR, QUESTION, LABEL, similarity]
+Index: []
+  (無相似度 > 0.95 的題目)
+Processing index 93, year = RII2000, question = 您現在所做的工作，是否容易得到慢性疾病(如因噪音使聽力受損、因灰塵?l多造成肺部問題)
+Empty DataFrame
+Columns: [YEAR, QUESTION, LABEL, similarity]
+Index: []
+  (無相似度 > 0.95 的題目)
+Processing index 94, year = RII2000, question = 您現在所做的工作，是否具有危險性或容易受傷
+   YEAR               QUESTION LABEL  similarity
+RII2001 您現在所做的工作，是否具有危險性或容易受傷?    工作    0.964947
+O23 created.
+Processing index 95, year = RII2000, question = 您現在所做的工作，是否工作壓力太大
+   YEAR           QUESTION LABEL  similarity
+RII2001 您現在所做的工作，是否工作壓力太大?    工作    0.972757
+O24 created.
+Processing index 96, year = RII2000, question = 從我們去年1月訪問到這次訪問的期間內，您總共做過幾份工作?  份
+Empty DataFrame
+Columns: [YEAR, QUESTION, LABEL, similarity]
+Index: []
+  (無相似度 > 0.95 的題目)
+Processing index 97, year = RII2000, question = 請問您過去這一個月之內有沒有在找工作?
+        YEAR                          QUESTION LABEL  similarity
+RIII&RIV2002               請問您過去這一個月之內有沒有在找工作?    工作    1.000000
+     RII2000               請問您過去這一個月之內有沒有在找工作?    工作    1.000000
+RIII&RIV2002 請問您過去這一個月之內有沒有在找工作?若有，到目前為止已找了__週    工作    0.960480
+RIII&RIV2002 請問您過去這一個月之內有沒有在找工作?若有，到目前為止已找了__月    工作    0.953188
+Processing index 98, year = RII2000, question = 若有，到目前為止已找了__週
+Empty DataFrame
+Columns: [YEAR, QUESTION, LABEL, similarity]
+Index: []
+  (無相似度 > 0.95 的題目)
+Processing index 99, year = RII2000, question = 您希望找的是什麼樣的工作?
+   YEAR      QUESTION LABEL  similarity
+RII2001 您希望找的是什麼樣的工作?    工作         1.0
+O25 created.
+Processing index 100, year = RII2000, question = 您用什麼方法找尋工作?家人介紹
+   YEAR        QUESTION LABEL  similarity
+RII2000 您用什麼方法找尋工作?親戚介紹    工作    0.967905
+O26 created.
+Processing index 102, year = RII2000, question = 您用什麼方法找尋工作?同鄉介紹
+Empty DataFrame
+Columns: [YEAR, QUESTION, LABEL, similarity]
+Index: []
+  (無相似度 > 0.95 的題目)
+Processing index 103, year = RII2000, question = 您用什麼方法找尋工作?朋友介紹
+Empty DataFrame
+Columns: [YEAR, QUESTION, LABEL, similarity]
+Index: []
+  (無相似度 > 0.95 的題目)
+Processing index 104, year = RII2000, question = 您用什麼方法找尋工作?老師介紹
+Empty DataFrame
+Columns: [YEAR, QUESTION, LABEL, similarity]
+Index: []
+  (無相似度 > 0.95 的題目)
+Processing index 105, year = RII2000, question = 您用什麼方法找尋工作?向公私之就業服務機構求職
+Empty DataFrame
+Columns: [YEAR, QUESTION, LABEL, similarity]
+Index: []
+  (無相似度 > 0.95 的題目)
+Processing index 106, year = RII2000, question = 您用什麼方法找尋工作?看徵才啟事
+   YEAR        QUESTION LABEL  similarity
+ RR2012   您最主要用什麼方法找尋工作    工作    0.957674
+RII2000 您用什麼方法找尋工作?自己去找    工作    0.957419
+O27 created.
+Processing index 108, year = RII2000, question = 您用什麼方法找尋工作?其他
+        YEAR        QUESTION    LABEL  similarity
+      RR2008  您最主要用什麼方法找尋工作?       工作    0.967432
+      RR2007  您最主要用什麼方法找尋工作?       工作    0.967432
+      RR2009  您最主要用什麼方法找尋工作?       工作    0.967432
+RIII&RIV2002  您最主要用什麼方法找尋工作?       工作    0.967432
+      RR2018  您最主要用什麼方法找尋工作? 工作：訓練及證照    0.967432
+      RR2006  您最主要用什麼方法找尋工作?       工作    0.967432
+     RII2000 您用什麼方法找尋工作?自己去找       工作    0.959714
+      RR2012   您最主要用什麼方法找尋工作       工作    0.954211
+Processing index 109, year = RII2000, question = 請問您(先生/太太)目前有沒有工作?
+Empty DataFrame
+Columns: [YEAR, QUESTION, LABEL, similarity]
+Index: []
+  (無相似度 > 0.95 的題目)
+Processing index 110, year = RII2000, question = 請問您(先生/太太)目前沒有工作的原因是什麼?

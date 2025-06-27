@@ -6,15 +6,16 @@ import pandas as pd
 import openai
 import json
 import re
-path = 'data/five_years'
+path = 'data/main_sample'
 
 f = open("api_key.txt", "r")
 api_key = f.read()
 openai.api_key = api_key
 f.close()
+model = "gpt-4o-mini-2024-07-18"
 
 
-def labeling():
+def labeling(path, fl):
     # fine_tune = []
     # base_year = input('Base year: ')
     # fl = ''
@@ -31,9 +32,11 @@ def labeling():
 
     label = list(set(label))
     print(label)
+    cls = True
+
+    '''
     fl = ''
     year = input('Year: ')
-    cls = False
     if "clear" in year:
         year = year.split(' ')[1]
         cls = True
@@ -42,6 +45,7 @@ def labeling():
             fl = f
             print("Getting data from:", fl)
             break
+    '''
     df = pd.read_csv(os.path.join(path, fl))
     df.fillna('', inplace=True)
     df['pset'] = df['NUMBER'].apply(
@@ -50,7 +54,8 @@ def labeling():
     for pbset in df['pset'].unique():
         if pbset == '':
             continue
-        system_prompt = f"你是問卷題目分類專家，根據題組內容提供適當標籤. 目前的標籤如下（如無適當標籤可自行生成）: {label}, 讓每個問題被分配到適合的標籤(請特別注意問題所問的情境或身份，例如：問先生/太太的工作則輸出婚姻/同居/配偶) 問題所屬的標籤可能與上一題的標籤有關係，請務必參考。針對問題輸出單一標籤並且勿輸出任何多餘文字或符號"
+        # system_prompt = ""
+        system_prompt = f"根據題組內容在以下[{', '.join(label)}]標籤中選擇最適當的 只能輸出提供的標籤 不要自己新創 注意問題主詞 可參考前一個標籤 不可直接沿用 針對問題輸出單一標籤並且勿輸出任何多餘文字或任何符號。"
         print('=====================')
         print(pbset)
         print(df[df['pset'] == pbset]['QUESTION'])
@@ -72,29 +77,34 @@ def labeling():
 
         print("Asking GPT-4...")
         if last_type != "":
-            prompt = f"The question type before is {last_type}. Question: {df[df['pset'] == pbset]['QUESTION'].values}"
+            prompt = f"前一題屬於 {last_type} 問題: {df[df['pset'] == pbset]['QUESTION'].values}"
         else:
             prompt = f"Question: {df[df['pset'] == pbset]['QUESTION'].values}"
         print(prompt)
         try:
             response = openai.chat.completions.create(
-                model="ft:gpt-4o-mini-2024-07-18:personal:labeling:BEueWn8W",
+                model= model,
                 messages=[
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": prompt}
                 ],
-                max_tokens=10,  # 限制回應的長度以只包含 cluster 編號
-                temperature=0.1  # 設定較低的隨機性以提高準確性
+                max_tokens=15,  # 限制回應的長度以只包含 cluster 編號
+                temperature=0.05  # 設定較低的隨機性以提高準確性
             )
             print(response.choices[0].message.content.strip().split('\n')[0])
             this_type = response.choices[0].message.content.strip().split('\n')[
                 0]
-            this_type = re.split(r'：|︰|・|:', this_type)[0]
             if this_type not in label:
                 print("===New label===")
-            if this_type != last_type:
                 wait = input(
-                    f'This {this_type}, Last {last_type}, Correct? (y/n)')
+                    f'New label detected: {this_type}. Is this correct? (y/n) ')
+                if wait.lower() == 'y':
+                    label.append(this_type)
+                else:
+                    this_type = wait   
+            if this_type != last_type:
+                #wait = input(f'This {this_type}, Last {last_type}, Correct? (y/n)')
+                wait = ''
                 if 'exit' in wait:
                     break
                 elif wait != '':
@@ -151,4 +161,9 @@ def labeling():
     w.close()
 
 
-labeling()
+for f in os.listdir(path):
+    if f.endswith('label.csv'):
+        print("Processing file:", f)
+        fl = f
+        labeling(path, fl)
+

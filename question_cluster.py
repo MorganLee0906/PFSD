@@ -6,7 +6,7 @@ api_key = f.read()
 openai.api_key = api_key
 f.close()
 
-question_path = 'data/five_years/'
+question_path = 'data/main_sample/'
 question = {}
 clustered = {}
 for f in os.listdir(question_path):

@@ -3,4 +3,4 @@ openai
 numpy
 matplotlib
 setuptools
-tensorflow
+opnepyxl
